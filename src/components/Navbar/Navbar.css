@@ -1,0 +1,17 @@
+.header {
+  height: auto;
+  min-height: 64px;
+}
+.ant-menu-dark .ant-menu-item-selected {
+  background-color: #9747ff;
+}
+.header {
+  background-color: #9747ff;
+}
+.ant-menu-dark {
+  background-color: #9747ff;
+}
+.ant-menu-dark.ant-menu-horizontal > .ant-menu-item-selected {
+  background-color: #9747ff;
+}
+/*# sourceMappingURL=Navbar.css.map */
