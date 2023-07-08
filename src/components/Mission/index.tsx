@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { Card, Space, Typography, Image } from "antd";
 import books from "../../assets/images/books.avif";
 
