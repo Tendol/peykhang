@@ -1,8 +1,10 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { Space, Typography, Image, message, Skeleton } from "antd";
 import seven_years_in_tibet from "../../assets/images/seven_years_in_tibet.jpg";
 import { useQuery } from "@apollo/client";
 import { GET_BOOK } from "../../graphql/hooks/getBook";
 import { useParams } from "react-router-dom";
+
 const BookDetail = () => {
   const { id } = useParams();
   console.log({ id });

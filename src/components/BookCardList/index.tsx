@@ -1,15 +1,10 @@
 import { Space, Skeleton, message } from "antd";
-
 import { useQuery } from "@apollo/client";
 import { GET_BOOKS } from "../../graphql/hooks/getBooks";
 import BookCard from "../BookCard";
 import { useNavigate } from "react-router-dom";
-
-const gridStyle: React.CSSProperties = {
-  width: "5%",
-  textAlign: "center",
-};
-
+import React from "react";
+import { BookNode } from "peykhang/gql/graphql";
 const BookCardList: React.FC = () => {
   const { loading, error, data } = useQuery(GET_BOOKS);
   const navigate = useNavigate();
@@ -30,11 +25,13 @@ const BookCardList: React.FC = () => {
       ) : (
         <Space wrap size="large">
           {data &&
-            data.books.nodes.map((item: any) => (
+            data.books.nodes.map((item: BookNode) => (
+              // eslint-disable-next-line react/jsx-key
               <BookCard book={item} handleBookSelect={handleBookSelect} />
             ))}
           {data &&
-            data.books.nodes.map((item: any) => (
+            data.books.nodes.map((item: BookNode) => (
+              // eslint-disable-next-line react/jsx-key
               <BookCard book={item} handleBookSelect={handleBookSelect} />
             ))}
         </Space>

@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { Card } from "antd";
 import Meta from "antd/es/card/Meta";
 import { BookNode } from "peykhang/gql/graphql";

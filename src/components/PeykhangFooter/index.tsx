@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { HeartFilled } from "@ant-design/icons";
 import { Typography } from "antd";
 import { Footer } from "antd/es/layout/layout";

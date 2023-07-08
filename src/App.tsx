@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import "./App.css";
 import Home from "./components/Home";
 import { ApolloProvider } from "@apollo/client/react";
@@ -9,7 +10,7 @@ import PeykhangFooter from "./components/PeykhangFooter";
 import BookDetail from "./components/BookDetail";
 
 const AppRoute = () => {
-  let routes = useRoutes([
+  const routes = useRoutes([
     { path: "/", element: <Home /> },
     { path: "/books", element: <Books /> },
     { path: "/books/:id", element: <BookDetail /> },

@@ -1,6 +1,8 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { Menu, Space, Typography } from "antd";
 import { Header } from "antd/es/layout/layout";
 import { Link, useNavigate } from "react-router-dom";
+
 import "./Navbar.css";
 
 const Navbar = () => {
