@@ -1,5 +1,5 @@
 import { HeartFilled } from "@ant-design/icons";
-import { Space, Typography } from "antd";
+import { Typography } from "antd";
 import { Footer } from "antd/es/layout/layout";
 
 const PeykhangFooter = () => {

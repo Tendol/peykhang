@@ -1,4 +1,4 @@
-import { Row, Col, Card, Space, Skeleton, message } from "antd";
+import { Space, Skeleton, message } from "antd";
 
 import { useQuery } from "@apollo/client";
 import { GET_BOOKS } from "../../graphql/hooks/getBooks";

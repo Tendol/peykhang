@@ -3,15 +3,9 @@ import { Header } from "antd/es/layout/layout";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
-const NAV_BAR_COLOR = "#0D99FF";
 const Navbar = () => {
   const navigate = useNavigate();
-  const navBarItem = [
-    {
-      key: "books",
-      label: "Books",
-    },
-  ];
+
   return (
     <Header
       className="header"
