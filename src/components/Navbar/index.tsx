@@ -14,6 +14,7 @@ const Navbar = () => {
       style={{
         alignItems: "center",
         overflow: "hidden",
+        width: "100%",
       }}
     >
       <div

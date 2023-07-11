@@ -8,7 +8,7 @@ type Books {
 }
 
 type BookNode {
-  book: BookMetaData
+  bookMetaData: BookMetaData
   excerpt: String
   title: String
   uri: String

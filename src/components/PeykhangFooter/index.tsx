@@ -8,7 +8,7 @@ const PeykhangFooter = () => {
     <Footer
       style={{
         textAlign: "center",
-        position: "absolute",
+        position: "relative",
         left: 0,
         bottom: 0,
         right: 0,

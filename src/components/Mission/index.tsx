@@ -1,6 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { Card, Space, Typography, Image } from "antd";
 import books from "../../assets/images/books.avif";
+import { breakpoint } from "../../App";
 
 const Mission = () => {
   return (
@@ -8,15 +9,17 @@ const Mission = () => {
       <Card
         style={{
           paddingLeft: "6%",
-          paddingRight: "20%",
+          paddingRight: "10%",
           backgroundColor: "#F5FBFF",
         }}
       >
-        <Space direction="horizontal">
-          <Image width={300} src={books} />
+        <Space direction="horizontal" wrap={window.innerWidth <= breakpoint}>
+          <Image
+            width={window.innerWidth <= breakpoint ? 200 : 300}
+            src={books}
+          />
           <Space
             style={{
-              marginLeft: "20%",
               textAlign: "center",
             }}
           >

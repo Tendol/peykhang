@@ -9,6 +9,8 @@ import Navbar from "./components/Navbar";
 import PeykhangFooter from "./components/PeykhangFooter";
 import BookDetail from "./components/BookDetail";
 
+export const breakpoint = 650;
+
 const AppRoute = () => {
   const routes = useRoutes([
     { path: "/", element: <Home /> },
@@ -23,7 +25,9 @@ function AppWrapper() {
     <ApolloProvider client={client}>
       <Router>
         <Navbar />
-        <AppRoute />
+        <div style={{ minHeight: "calc(100vh - 150px)", width: "100%" }}>
+          <AppRoute />
+        </div>
         <PeykhangFooter />
       </Router>
     </ApolloProvider>

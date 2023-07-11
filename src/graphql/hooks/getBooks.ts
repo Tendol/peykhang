@@ -8,7 +8,7 @@ export const GET_BOOKS = gql`
         title
         uri
         slug
-        book {
+        bookMetaData {
           author
           isbn
           publicationDate

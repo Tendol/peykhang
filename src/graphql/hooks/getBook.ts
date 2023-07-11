@@ -3,21 +3,23 @@ import { gql } from "@apollo/client";
 export const GET_BOOK = gql`
   query book($id: ID!) {
     book(id: $id) {
-      book {
+      excerpt
+      title
+      uri
+      slug
+      bookMetaData {
         author
         isbn
         publicationDate
         publisher
       }
-      excerpt
+      id
       featuredImage {
         node {
           sourceUrl
           slug
         }
       }
-      title
-      slug
     }
   }
 `;
