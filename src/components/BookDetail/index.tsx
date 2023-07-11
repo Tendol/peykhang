@@ -44,8 +44,9 @@ const BookDetail = () => {
       ) : (
         <Space
           direction="horizontal"
-          style={{ margin: "10%" }}
+          style={{ marginLeft: "6%", marginRight: "6%", marginTop: "2%" }}
           wrap={window.innerWidth <= breakpoint}
+          align="start"
         >
           <Image
             loading="eager"
@@ -56,7 +57,7 @@ const BookDetail = () => {
             <Typography.Text style={{ fontSize: "20px" }}>
               {
                 <div
-                  dangerouslySetInnerHTML={{ __html: data?.book?.excerpt }}
+                  dangerouslySetInnerHTML={{ __html: data?.book?.content }}
                 />
               }
             </Typography.Text>

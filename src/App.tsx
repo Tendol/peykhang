@@ -1,5 +1,4 @@
 /* eslint-disable react/react-in-jsx-scope */
-import "./App.css";
 import Home from "./components/Home";
 import { ApolloProvider } from "@apollo/client/react";
 import client from "./lib/apollo";

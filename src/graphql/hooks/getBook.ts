@@ -4,6 +4,7 @@ export const GET_BOOK = gql`
   query book($id: ID!) {
     book(id: $id) {
       excerpt
+      content
       title
       uri
       slug
