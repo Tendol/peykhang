@@ -15,6 +15,7 @@ type BookNode {
   slug: String
   id: String
   featuredImage: FeaturedImage
+  content: String
 }
 
 type BookMetaData {
