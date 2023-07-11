@@ -13,7 +13,7 @@ const BooksPage = () => {
   console.log({ loading, error, data });
   return (
     <Space wrap size="large" style={{ paddingLeft: "2%", paddingRight: "2%" }}>
-      {[1, 2, 3, 4, 5].map((i) => (
+      {[1, 2, 3, 4, 5].map(() => (
         <>
           <Card hoverable>
             <Space wrap>
