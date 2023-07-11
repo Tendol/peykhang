@@ -7,7 +7,6 @@ import {
   Skeleton,
   Descriptions,
 } from "antd";
-import seven_years_in_tibet from "../../assets/images/seven_years_in_tibet.jpg";
 import { useQuery } from "@apollo/client";
 import { GET_BOOK } from "../../graphql/hooks/getBook";
 import { useParams } from "react-router-dom";
