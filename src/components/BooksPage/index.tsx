@@ -6,7 +6,7 @@ import { GET_BOOKS } from '../../../../peykhang/src/graphql/hooks/getBooks';
 import { Card, Skeleton, Space, Typography, message } from 'antd';
 // import { useNavigate } from 'react-router-dom';
 import FilterTools from '../FilterTools';
-import { breakpoint } from '../../../../peykhang/src/App';
+import { breakpoint } from '../../App';
 
 import './BooksPage.css';
 const { Meta } = Card;

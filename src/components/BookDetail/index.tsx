@@ -12,7 +12,7 @@ import { useQuery } from '@apollo/client';
 import { GET_BOOK } from '../../../../peykhang/src/graphql/hooks/getBook';
 import { useParams } from 'react-router-dom';
 // import { capitalize } from 'lodash';
-import { breakpoint } from '../../../../peykhang/src/App';
+import { breakpoint } from '../../App';
 
 // const LABEL_STYLE = {
 //   fontWeight: 'bold',
