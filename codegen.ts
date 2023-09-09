@@ -1,18 +1,19 @@
-import type { CodegenConfig } from "@graphql-codegen/cli";
+import type { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
   overwrite: true,
-  schema: "./src/graphql/schema.graphql",
-  documents: "./src/graphql/hooks",
+  schema: './src/graphql/schema.graphql',
+  documents: './src/graphql/hooks',
   generates: {
-    "src/gql/": {
-      preset: "client",
+    'src/gql/': {
+      preset: 'client',
       plugins: [],
       presetConfig: {
-        gqlTagName: "gql",
+        gqlTagName: 'gql',
       },
     },
   },
+
   ignoreNoDocuments: true,
 };
 

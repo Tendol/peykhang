@@ -13,9 +13,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "\n  fragment BookFields on BookNode {\n    excerpt\n    title\n    uri\n    slug\n    bookMetaData {\n      author\n      isbn\n      publicationDate\n      publisher\n    }\n    id\n    featuredImage {\n      node {\n        sourceUrl\n        slug\n      }\n    }\n  }\n": types.BookFieldsFragmentDoc,
-    "\n  query book($id: ID!) {\n    book(id: $id) {\n      excerpt\n      title\n      uri\n      slug\n      bookMetaData {\n        author\n        isbn\n        publicationDate\n        publisher\n      }\n      id\n      content\n      featuredImage {\n        node {\n          sourceUrl\n          slug\n        }\n      }\n    }\n  }\n": types.BookDocument,
-    "\n  query booksList {\n    books {\n      nodes {\n        excerpt\n        title\n        uri\n        slug\n        bookMetaData {\n          author\n          isbn\n          publicationDate\n          publisher\n        }\n        id\n        featuredImage {\n          node {\n            sourceUrl\n            slug\n          }\n        }\n      }\n    }\n  }\n": types.BooksListDocument,
+    "\n  query book($id: ID!) {\n    book(id: $id) {\n      id\n      title\n      summary\n      isbn\n    }\n  }\n": types.BookDocument,
 };
 
 /**
@@ -35,15 +33,7 @@ export function gql(source: string): unknown;
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "\n  fragment BookFields on BookNode {\n    excerpt\n    title\n    uri\n    slug\n    bookMetaData {\n      author\n      isbn\n      publicationDate\n      publisher\n    }\n    id\n    featuredImage {\n      node {\n        sourceUrl\n        slug\n      }\n    }\n  }\n"): (typeof documents)["\n  fragment BookFields on BookNode {\n    excerpt\n    title\n    uri\n    slug\n    bookMetaData {\n      author\n      isbn\n      publicationDate\n      publisher\n    }\n    id\n    featuredImage {\n      node {\n        sourceUrl\n        slug\n      }\n    }\n  }\n"];
-/**
- * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
- */
-export function gql(source: "\n  query book($id: ID!) {\n    book(id: $id) {\n      excerpt\n      title\n      uri\n      slug\n      bookMetaData {\n        author\n        isbn\n        publicationDate\n        publisher\n      }\n      id\n      content\n      featuredImage {\n        node {\n          sourceUrl\n          slug\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query book($id: ID!) {\n    book(id: $id) {\n      excerpt\n      title\n      uri\n      slug\n      bookMetaData {\n        author\n        isbn\n        publicationDate\n        publisher\n      }\n      id\n      content\n      featuredImage {\n        node {\n          sourceUrl\n          slug\n        }\n      }\n    }\n  }\n"];
-/**
- * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
- */
-export function gql(source: "\n  query booksList {\n    books {\n      nodes {\n        excerpt\n        title\n        uri\n        slug\n        bookMetaData {\n          author\n          isbn\n          publicationDate\n          publisher\n        }\n        id\n        featuredImage {\n          node {\n            sourceUrl\n            slug\n          }\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query booksList {\n    books {\n      nodes {\n        excerpt\n        title\n        uri\n        slug\n        bookMetaData {\n          author\n          isbn\n          publicationDate\n          publisher\n        }\n        id\n        featuredImage {\n          node {\n            sourceUrl\n            slug\n          }\n        }\n      }\n    }\n  }\n"];
+export function gql(source: "\n  query book($id: ID!) {\n    book(id: $id) {\n      id\n      title\n      summary\n      isbn\n    }\n  }\n"): (typeof documents)["\n  query book($id: ID!) {\n    book(id: $id) {\n      id\n      title\n      summary\n      isbn\n    }\n  }\n"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};

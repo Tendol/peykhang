@@ -1,16 +1,16 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { Card, Space, Typography, Image } from "antd";
-import books from "../../assets/images/books.avif";
-import { breakpoint } from "../../App";
+import { Card, Space, Typography, Image } from 'antd';
+import books from '../../assets/books.avif';
+import { breakpoint } from '../../../../peykhang/src/App';
 
-const Mission = () => {
+const Mission: React.FC = () => {
   return (
     <>
       <Card
         style={{
-          paddingLeft: "6%",
-          paddingRight: "10%",
-          backgroundColor: "#F5FBFF",
+          paddingLeft: '6%',
+          paddingRight: '10%',
+          backgroundColor: '#F5FBFF',
         }}
       >
         <Space direction="horizontal" wrap={window.innerWidth <= breakpoint}>
@@ -20,10 +20,10 @@ const Mission = () => {
           />
           <Space
             style={{
-              textAlign: "center",
+              textAlign: 'center',
             }}
           >
-            <Typography.Text style={{ fontSize: "20px" }}>
+            <Typography.Text style={{ fontSize: '20px' }}>
               Peykhang is a one stop all for any individual interested in
               Tibetan literacy. Every time I wanted to read a book either
               written by a Tibetan author or pertaining to Tibet I needed to

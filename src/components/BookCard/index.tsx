@@ -1,29 +1,34 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { Card } from "antd";
-import Meta from "antd/es/card/Meta";
-import { BookNode } from "peykhang/gql/graphql";
+import { Card } from 'antd';
+import Meta from 'antd/es/card/Meta';
+import { Book } from '../../gql/graphql';
 
-type BookCardProps = {
-  book: BookNode;
-  handleBookSelect: (id: string) => void;
-};
+interface BookCardProps {
+  book: Book;
+  handleBookSelect: (id: string | null | undefined) => void;
+}
 const BookCard: React.FC<BookCardProps> = ({
   book,
   handleBookSelect,
 }: BookCardProps) => {
-  console.log({ book });
   return (
     <Card
       hoverable
-      style={{ width: "150px" }}
-      onClick={() => handleBookSelect(book?.id)}
-      cover={
-        <img alt={book?.title} src={book?.featuredImage?.node?.sourceUrl} />
-      }
+      style={{ width: '150px' }}
+      onClick={() => {
+        handleBookSelect(book?.id);
+      }}
+      // cover={
+      //   <img
+      //     alt={book?.title}
+      //     style={{ width: "150px" }}
+      //     src={book?.featuredImage?.node?.sourceUrl}
+      //   />
+      // }
     >
       <Meta
         description={book?.title}
-        style={{ fontSize: "13px", fontWeight: "bold", color: "black" }}
+        style={{ fontSize: '13px', fontWeight: 'bold', color: 'black' }}
       />
     </Card>
   );

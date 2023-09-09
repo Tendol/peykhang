@@ -1,38 +1,52 @@
-import { Space, Skeleton, message } from "antd";
-import { useQuery } from "@apollo/client";
-import { GET_BOOKS } from "../../graphql/hooks/getBooks";
-import BookCard from "../BookCard";
-import { useNavigate } from "react-router-dom";
-import React from "react";
-import { BookNode, Books } from "peykhang/gql/graphql";
+import { Space, Skeleton, message, Typography, Card } from 'antd';
+import { useQuery } from '@apollo/client';
+import { GET_BOOKS } from '../../../../peykhang/src/graphql/hooks/getBooks';
+import BookCard from '../BookCard';
+import { useNavigate, useParams } from 'react-router-dom';
+import React from 'react';
+// import { Book } from 'peykhang/gql/graphql';
+import { upperFirst, lowerCase } from 'lodash';
+import { type Book } from '../../gql/graphql';
 
 export interface BooksData {
-  books: Books;
+  books: [Book];
 }
 const BookCardList: React.FC = () => {
   const { loading, error, data } = useQuery<BooksData>(GET_BOOKS);
   const navigate = useNavigate();
+  const { tag } = useParams();
 
-  if (error) {
-    message.error(
-      "There is an issue loading the book list. We will fix it as soon as possible"
+  console.log({ tag });
+
+  if (error != null) {
+    void message.error(
+      'There is an issue loading the book list. We will fix it as soon as possible',
     );
   }
-  const handleBookSelect = (id: string) => {
-    navigate(`books/${id}`);
+  const handleBookSelect = (id: string | null | undefined): void => {
+    navigate(`/books/${id}`);
   };
   return (
     <>
       {loading ? (
         <Skeleton />
       ) : (
-        <Space wrap size="large">
-          {data &&
-            data.books.nodes.map((item: BookNode) => (
+        <Card style={{ width: '100%' }}>
+          {!tag ? (
+            <Typography.Title> Latest addition to peykhang </Typography.Title>
+          ) : (
+            <Typography.Title>
+              {' '}
+              {`${upperFirst(lowerCase(tag))} books`}{' '}
+            </Typography.Title>
+          )}
+          <Space wrap size="large">
+            {data?.books.map((item: Book) => (
               // eslint-disable-next-line react/jsx-key
               <BookCard book={item} handleBookSelect={handleBookSelect} />
             ))}
-        </Space>
+          </Space>
+        </Card>
       )}
     </>
   );

@@ -1,36 +1,12 @@
 type Query {
-  books: Books
-  book(id: ID!): BookNode
+  books: [Book]
+  book(id: ID!): Book
 }
 
-type Books {
-  nodes: [BookNode]
-}
-
-type BookNode {
-  bookMetaData: BookMetaData
-  excerpt: String
+type Book {
+  # bookMetaData: BookMetaData
+  summary: String
   title: String
-  uri: String
-  slug: String
-  id: String
-  featuredImage: FeaturedImage
-  content: String
-}
-
-type BookMetaData {
-  title: String
-  author: String
+  id: ID
   isbn: String
-  publicationDate: String
-  publisher: String
-}
-
-type FeaturedImage {
-  node: Image
-}
-
-type Image {
-  sourceUrl: String
-  slug: String
 }

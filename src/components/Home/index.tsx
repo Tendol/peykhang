@@ -1,11 +1,12 @@
 /* eslint-disable react/react-in-jsx-scope */
-import Mission from "../Mission";
-import LatestAdditionBooks from "../LatestAdditionBooks";
-const Home = () => {
+import BookCardList from '../BookCardList';
+import Mission from '../Mission';
+
+const Home: React.FC = () => {
   return (
     <>
       <Mission />
-      <LatestAdditionBooks />
+      <BookCardList />
     </>
   );
 };
