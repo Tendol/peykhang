@@ -9,7 +9,7 @@ import {
   Card,
 } from 'antd';
 import { useQuery } from '@apollo/client';
-import { GET_BOOK } from '../../../../peykhang/src/graphql/hooks/getBook';
+import { GET_BOOK } from '../../graphql/hooks/getBook';
 import { useParams } from 'react-router-dom';
 // import { capitalize } from 'lodash';
 import { breakpoint } from '../../App';

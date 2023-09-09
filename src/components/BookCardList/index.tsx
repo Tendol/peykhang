@@ -1,6 +1,6 @@
 import { Space, Skeleton, message, Typography, Card } from 'antd';
 import { useQuery } from '@apollo/client';
-import { GET_BOOKS } from '../../../../peykhang/src/graphql/hooks/getBooks';
+import { GET_BOOKS } from '../../graphql/hooks/getBooks';
 import BookCard from '../BookCard';
 import { useNavigate, useParams } from 'react-router-dom';
 import React from 'react';

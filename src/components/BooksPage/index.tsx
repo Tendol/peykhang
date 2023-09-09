@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/react-in-jsx-scope */
 import { useQuery } from '@apollo/client';
-import { GET_BOOKS } from '../../../../peykhang/src/graphql/hooks/getBooks';
+import { GET_BOOKS } from '../../graphql/hooks/getBooks';
 // import { BooksData } from '../BookCardList';
 import { Card, Skeleton, Space, Typography, message } from 'antd';
 // import { useNavigate } from 'react-router-dom';
