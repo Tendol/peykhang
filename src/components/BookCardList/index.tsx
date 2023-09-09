@@ -41,7 +41,7 @@ const BookCardList: React.FC = () => {
             </Typography.Title>
           )}
           <Space wrap size="large">
-            {data?.books.map((item: Book) => (
+            {data?.books?.map((item: Book) => (
               // eslint-disable-next-line react/jsx-key
               <BookCard book={item} handleBookSelect={handleBookSelect} />
             ))}

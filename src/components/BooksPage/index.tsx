@@ -75,7 +75,7 @@ const BooksPage: React.FC = () => {
                   {/* <div onClick={() => handleShowBooksList("fiction")}> */}
                   <Meta
                     title="Fiction"
-                    description={`${data?.books.length} books`}
+                    description={`${data?.books?.length} books`}
                     style={{ paddingTop: '10px' }}
                   />
                   {/* </div> */}
@@ -95,7 +95,7 @@ const BooksPage: React.FC = () => {
                   {/* <div onClick={() => handleShowBooksList("tibetan_author")}> */}
                   <Meta
                     title="Tibetan author"
-                    description={`${data?.books.length} books`}
+                    description={`${data?.books?.length} books`}
                     style={{ paddingTop: '10px' }}
                   />
                   {/* </div> */}
