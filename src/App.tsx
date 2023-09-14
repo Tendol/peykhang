@@ -8,6 +8,7 @@ import Navbar from './components/Navbar';
 import PeykhangFooter from './components/PeykhangFooter';
 import BookDetail from './components/BookDetail';
 import BookCardList from './components/BookCardList';
+import TypingTestHome from './components/TibGames/TypingTest/Home';
 
 export const breakpoint = 650;
 
@@ -20,6 +21,7 @@ const AppRoute = (): React.ReactElement<
     { path: '/books', element: <BooksPage /> },
     { path: '/books/:id', element: <BookDetail /> },
     { path: '/books/tags/:tag', element: <BookCardList /> },
+    { path: '/games/typing_test', element: <TypingTestHome /> },
   ]);
   return routes;
 };

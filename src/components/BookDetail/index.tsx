@@ -25,7 +25,6 @@ import { breakpoint } from '../../App';
 // };
 const BookDetail: React.FC = () => {
   const { id } = useParams();
-  console.log({ id });
   const { loading, error, data } = useQuery(GET_BOOK, {
     variables: {
       id,

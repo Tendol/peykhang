@@ -17,14 +17,12 @@ const FilterTools: React.FC = () => {
 
   const [filterSelected, setFilterSelected] = React.useState([]);
   const handleSelectFilter = (value: any): void => {
-    console.log({ value });
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
     filterSelected.push(value);
     setFilterSelected(filterSelected);
   };
 
-  console.log({ filterSelected });
   const onSearch = (): void => {
     console.log('somethin');
   };

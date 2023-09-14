@@ -16,8 +16,6 @@ const BookCardList: React.FC = () => {
   const navigate = useNavigate();
   const { tag } = useParams();
 
-  console.log({ tag });
-
   if (error != null) {
     void message.error(
       'There is an issue loading the book list. We will fix it as soon as possible',
