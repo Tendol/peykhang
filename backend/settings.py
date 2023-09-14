@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 import environ
+import dj_database_url
+import django_heroku
 
 env = environ.Env()
 environ.Env.read_env()
@@ -34,6 +36,9 @@ ALLOWED_HOSTS = [
     "peykhang.herokuapp.com",
     "www.peykhang.com",
     "peykhang-e0422ac066cb.herokuapp.com",
+    "localhost:8000",
+    "localhost:3000",
+    "localhost",
 ]
 
 
@@ -89,6 +94,7 @@ WSGI_APPLICATION = "backend.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
@@ -99,6 +105,7 @@ DATABASES = {
         "PORT": env("DB_PORT"),
     }
 }
+DATABASES["default"] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -135,17 +142,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "build/static"),
-]
+# Activate django Heroku
+django_heroku.settings(locals())
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "build/static"),
+# ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+# STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-STORAGES = {
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
+# STORAGES = {
+#     "staticfiles": {
+#         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+#     },
+# }
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -155,7 +164,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Add CORS_ORIGIN_WHITELIST to allow these domains to be authorized to make cross-site HTTP requests
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
-    "http://127.0.0.1:3000"
+    "http://127.0.0.1:3000",
     # your React App domain
 ]
 
