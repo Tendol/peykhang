@@ -16,7 +16,6 @@ interface BoardProps {
 
 const FONT_SIZE = ' calc(10px + 4vmin)';
 const TIMER = 60000;
-const OUTGOING_CHAR_SHOW = -22;
 
 const Board = ({
   initialWords,
@@ -38,12 +37,20 @@ const Board = ({
   const [typedChars, setTypedChars] = useState('');
   const [startTime, setStartTime] = useState(false);
 
+  const handleFinish = () => {
+    setStartTime(false);
+    setDisableInput(true);
+    setCurrentChar('');
+    setFinished(true);
+
+    const acc = ((outgoingChars.length * 100) / typedChars.length).toFixed(2);
+    setAccuracy(Number(acc));
+    setWpm(wordCount);
+  };
   React.useEffect(() => {
     if (startTime) {
       const timer = setTimeout(() => {
-        setStartTime(false);
-        setDisableInput(true);
-        setCurrentChar('');
+        handleFinish();
       }, TIMER);
       return () => {
         clearTimeout(timer);
@@ -97,14 +104,6 @@ const Board = ({
 
     const updatedTypedChars = typedChars + key;
     setTypedChars(updatedTypedChars);
-
-    const acc = (
-      (updatedOutgoingChars.length * 100) /
-      updatedTypedChars.length
-    ).toFixed(2);
-    setAccuracy(Number(acc));
-    setWpm(wordCount);
-    setFinished(true);
   });
 
   return (

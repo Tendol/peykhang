@@ -21,7 +21,7 @@ const AppRoute = (): React.ReactElement<
     { path: '/books', element: <BooksPage /> },
     { path: '/books/:id', element: <BookDetail /> },
     { path: '/books/tags/:tag', element: <BookCardList /> },
-    { path: '/games/typing_test', element: <TypingTestHome /> },
+    { path: '/games/typingGame', element: <TypingTestHome /> },
   ]);
   return routes;
 };
