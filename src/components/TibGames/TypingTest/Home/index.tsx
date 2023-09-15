@@ -79,7 +79,9 @@ const TypingTestHome: React.FC = () => {
             <Descriptions
               items={resultItems}
               column={1}
-              style={{ marginLeft: '30%', marginTop: '4%', fontSize: '16px' }}
+              style={{ marginLeft: '30%', marginTop: '4%' }}
+              labelStyle={{ fontSize: '1.25vw' }}
+              contentStyle={{ fontSize: '1.25vw' }}
             />
           }
           extra={
