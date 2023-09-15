@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import useKeyPress from '../../../Helper/useKeyPress';
 import { Button, Card, Descriptions, Result, Typography } from 'antd';
 import './Board.css';
+import TibetanTexts from '../TibetanTexts';
+import { getRandomInt } from '../Home';
 
 interface BoardProps {
   setError: React.Dispatch<React.SetStateAction<boolean>>;
@@ -15,7 +17,7 @@ interface BoardProps {
 }
 
 const FONT_SIZE = ' calc(10px + 4vmin)';
-const TIMER = 10000;
+const TIMER = 60000;
 
 const Board = ({
   initialWords,
@@ -30,9 +32,7 @@ const Board = ({
   const [currentChar, setCurrentChar] = useState(initialWords.charAt(0));
   const [incomingChars, setIncomingChars] = useState(initialWords.substring(1));
   const [storeChars, setStoreChars] = useState('');
-  const [leftPadding, setLeftPadding] = useState(
-    new Array(20).fill(' ').join(''),
-  );
+  const [leftPadding, setLeftPadding] = useState('');
   const [wordCount, setWordCount] = useState(0);
   const [typedChars, setTypedChars] = useState('');
   const [startTime, setStartTime] = useState(false);
@@ -55,9 +55,16 @@ const Board = ({
   }, [startTime]);
 
   useKeyPress((key: string) => {
+    console.log({ key, currentChar });
     if (!startTime) {
       setStartTime(true);
     }
+    if (incomingChars.length < 22) {
+      const newInitialWords =
+        TibetanTexts[getRandomInt(TibetanTexts.length - 1)];
+      setIncomingChars(incomingChars + newInitialWords);
+    }
+
     let updatedOutgoingChars = outgoingChars;
     let updatedIncomingChars = incomingChars;
     let updatedStoreChars = storeChars;

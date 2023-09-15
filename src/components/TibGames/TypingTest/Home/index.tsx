@@ -5,12 +5,18 @@ import {
   DescriptionsProps,
   Input,
   Result,
+  Typography,
 } from 'antd';
 import React from 'react';
 import Board from '../Board';
 import { SmileOutlined } from '@ant-design/icons';
-import { NumTrans } from '../../NumTrans';
+import { NumTrans } from '../NumTrans';
+import TibetanTexts from '../TibetanTexts';
+import { breakpoint } from '../../../../App';
 
+export const getRandomInt = (max: number) => {
+  return Math.floor(Math.random() * max);
+};
 const TypingTestHome: React.FC = () => {
   const [inputValue, setInputValue] = React.useState('');
   const [error, setError] = React.useState(false);
@@ -20,10 +26,7 @@ const TypingTestHome: React.FC = () => {
   const [disableInput, setDisableInput] = React.useState(false);
 
   const initialWords: string =
-    // eslint-disable-next-line no-multi-str
-    'ཕྱི་ལོ་༢༠༢༣་ཟླ་བ་༠༩་ཚེས་༡༤་ཉིན་ཕྱི་དྲིལ་བཀའ་བློན་ནོར་འཛིན་སྒྲོལ་མ་མཆོག་གིས་བོད་ཀྱི་སྲིད་བྱུས་ཉམས་ཞིབ་ཁང་གིས་དཔར་འགྲེམས་ཞུས་པའི་བོད་ཀྱི་སྤྲུལ་སྐུའི་ལམ་ལུགས་སྐོར་གྱི་དཔྱད་རྩོམ་ཕྱོགས་བསྒྲིགས་ཀྱི་དཔེ་དེབ་དབུ་འབྱེད་གནང་ཡོད། \
-    དེ་ཡང་གོང་ཚེས་ཉིན་བོད་ཀྱི་སྲིད་བྱུས་ཉམས་ཞིབ་ཁང་གི་གོ་སྒྲིག་འོག་བོད་མིའི་སྒྲིག་འཛུགས་ཀམ་པུ་ཊར་སྡེ་ཚན་གྱི་ཚོགས་ཁང་དུ་གཞུང་ས་དགའ་ལྡན་ཕོ་བྲང་སྐབས་ཀྱི་བོད་ཀྱི་ལོ་རྒྱུས་གནས་བབ་བསྐྱར་ཞིབ་ཞེས་པའི་འཆད་ཁྲིད་ལེ་ཚན་ཞིག་འཚོགས་ཡོད་པའི་ཐོག་མར་ཕྱི་དྲིལ \
-    ་བཀའ་བློན་ནོར་འཛིན་སྒྲོལ་མ་མཆོག་གིས་བོད་ཀྱི་སྲིད་བྱུས་ཉམས་ཞིབ་ཁང་གི་འདོན་སྤེལ་གནང་བའི་བོད་ཀྱི་སྤྲུལ་སྐུའི་ལམ་ལུགས་སྐོར་གྱི་དཔྱད་རྩོམ་ཕྱོགས་བསྒྲིགས་ཀྱི་དཔེ་དེབ་དབུ་འབྱེད་གནང་ཡོད་པ་རེད།';
+    TibetanTexts[getRandomInt(TibetanTexts.length - 1)];
 
   const inputHandler = (e: { target: { value: any } }) => {
     setInputValue(e.target.value);
@@ -74,14 +77,26 @@ const TypingTestHome: React.FC = () => {
       {finished ? (
         <Result
           icon={<SmileOutlined />}
-          title="Great, you finished the 1 minute typing game"
+          title={
+            <Typography.Text
+              style={{
+                fontSize: window.innerWidth > breakpoint ? '2vw' : '7vw',
+              }}
+            >
+              Great, you finished the 1 minute typing game{' '}
+            </Typography.Text>
+          }
           subTitle={
             <Descriptions
               items={resultItems}
               column={1}
               style={{ marginLeft: '30%', marginTop: '4%' }}
-              labelStyle={{ fontSize: '1.25vw' }}
-              contentStyle={{ fontSize: '1.25vw' }}
+              labelStyle={{
+                fontSize: window.innerWidth > breakpoint ? '1.5vw' : '5vw',
+              }}
+              contentStyle={{
+                fontSize: window.innerWidth > breakpoint ? '1.5vw' : '5vw',
+              }}
             />
           }
           extra={
