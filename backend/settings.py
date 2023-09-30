@@ -13,7 +13,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 import environ
-import dj_database_url
+
+# import dj_database_url
 
 env = environ.Env()
 environ.Env.read_env()
@@ -54,6 +55,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "graphene_django",
     "peykhangApi",
+    "django_filters",
 ]
 
 MIDDLEWARE = [
@@ -104,7 +106,7 @@ DATABASES = {
         "PORT": env("DB_PORT"),
     }
 }
-DATABASES["default"] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+# DATABASES["default"] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -168,3 +170,10 @@ CORS_ORIGIN_WHITELIST = [
 
 # Graphql Schema
 GRAPHENE = {"SCHEMA": "peykhangApi.schema.schema"}
+
+GRAPHENE_DJANGO_FILTER = {
+    "FILTER_KEY": "filter",
+    "AND_KEY": "and",
+    "OR_KEY": "or",
+    "NOT_KEY": "not",
+}

@@ -1,10 +1,10 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { Card } from 'antd';
 import Meta from 'antd/es/card/Meta';
-import { Book } from '../../gql/graphql';
+import { Book, Maybe } from '../../gql/graphql';
 
 interface BookCardProps {
-  book: Book;
+  book?: Maybe<Book> | undefined;
   handleBookSelect: (id: string | null | undefined) => void;
 }
 const BookCard: React.FC<BookCardProps> = ({

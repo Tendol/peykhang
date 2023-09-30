@@ -1,19 +1,25 @@
+@navigation-header-background-color: #6349f7;
+@navigation-header-select-color: #4c2ee1;
 .header {
   height: auto;
   min-height: 64px;
 }
 .ant-menu-dark .ant-menu-item-selected {
-  background-color: #9747ff;
+  background-color: @navigation-header-background-color;
 }
 
 .header {
-  background-color: #9747ff;
+  background-color: @navigation-header-background-color;
 }
 
 .ant-menu-dark {
-  background-color: #9747ff;
+  background-color: @navigation-header-background-color;
 }
 
 .ant-menu-dark.ant-menu-horizontal > .ant-menu-item-selected {
-  background-color: #9747ff;
+  background-color: @navigation-header-background-color;
+}
+
+.ant-menu-dark.ant-menu-horizontal > .ant-menu-item-selected:hover {
+  background-color: @navigation-header-select-color;
 }

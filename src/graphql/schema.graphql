@@ -1,6 +1,14 @@
 type Query {
-  books: [Book]
+  books(language_In: [PeykhangapiBookLanguageChoices]): [BookConnection]
   book(id: ID!): Book
+}
+
+type BookConnection {
+  edges: [BookNode]
+}
+
+type BookNode {
+  node: Book
 }
 
 type Book {
@@ -9,4 +17,11 @@ type Book {
   title: String
   id: ID
   isbn: String
+  language: String
+  genre: [GenreType]
+}
+
+type GenreType {
+  id: ID
+  label: String
 }

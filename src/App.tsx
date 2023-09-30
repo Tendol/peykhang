@@ -3,7 +3,7 @@ import Home from './components/Home';
 import { ApolloProvider } from '@apollo/client/react';
 import client from './lib/apollo';
 import { BrowserRouter as Router, useRoutes } from 'react-router-dom';
-import BooksPage from './components/BooksPage';
+import BookCatelogPage from './components/BookCatelogPage';
 import Navbar from './components/Navbar';
 import PeykhangFooter from './components/PeykhangFooter';
 import BookDetail from './components/BookDetail';
@@ -18,7 +18,7 @@ const AppRoute = (): React.ReactElement<
 > | null => {
   const routes = useRoutes([
     { path: '/', element: <Home /> },
-    { path: '/books', element: <BooksPage /> },
+    { path: '/books', element: <BookCatelogPage /> },
     { path: '/books/:id', element: <BookDetail /> },
     { path: '/books/tags/:tag', element: <BookCardList /> },
     { path: '/games/typingGame', element: <TypingTestHome /> },

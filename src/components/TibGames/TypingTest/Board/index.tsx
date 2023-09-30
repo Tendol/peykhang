@@ -55,7 +55,6 @@ const Board = ({
   }, [startTime]);
 
   useKeyPress((key: string) => {
-    console.log({ key, currentChar });
     if (!startTime) {
       setStartTime(true);
     }

@@ -6,10 +6,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import React from 'react';
 // import { Book } from 'peykhang/gql/graphql';
 import { upperFirst, lowerCase } from 'lodash';
-import { type Book } from '../../gql/graphql';
+import { BookNode, type Book } from '../../gql/graphql';
 
 export interface BooksData {
-  books: [Book];
+  books: {
+    edges: [{ node: Book }];
+  };
 }
 const BookCardList: React.FC = () => {
   const { loading, error, data } = useQuery<BooksData>(GET_BOOKS);
@@ -39,9 +41,9 @@ const BookCardList: React.FC = () => {
             </Typography.Title>
           )}
           <Space wrap size="large">
-            {data?.books?.map((item: Book) => (
+            {data?.books?.edges?.map(({ node }: BookNode) => (
               // eslint-disable-next-line react/jsx-key
-              <BookCard book={item} handleBookSelect={handleBookSelect} />
+              <BookCard book={node} handleBookSelect={handleBookSelect} />
             ))}
           </Space>
         </Card>
