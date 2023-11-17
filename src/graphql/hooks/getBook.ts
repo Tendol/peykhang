@@ -7,6 +7,12 @@ export const GET_BOOK = gql`
       title
       summary
       isbn
+      language
+      bookCoverUrl
+      publisher {
+        name
+      }
+      publicationDate
     }
   }
 `;

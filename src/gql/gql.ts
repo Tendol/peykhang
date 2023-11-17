@@ -13,8 +13,9 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "\n  query book($id: ID!) {\n    book(id: $id) {\n      id\n      title\n      summary\n      isbn\n    }\n  }\n": types.BookDocument,
-    "\n  query booksList {\n    books {\n      edges {\n        node {\n          id\n          summary\n          title\n          isbn\n          language\n          genre {\n            label\n          }\n        }\n      }\n    }\n  }\n": types.BooksListDocument,
+    "\n  query book($id: ID!) {\n    book(id: $id) {\n      id\n      title\n      summary\n      isbn\n      language\n      bookCoverUrl\n      publisher {\n        name\n      }\n      publicationDate\n    }\n  }\n": types.BookDocument,
+    "\n  query booksList(\n    $language_In: [PeykhangapiBookLanguageChoices]\n    $genre_Label_In: [String]\n  ) {\n    books(language_In: $language_In, genre_Label_In: $genre_Label_In) {\n      edges {\n        node {\n          id\n          summary\n          title\n          isbn\n          language\n          bookCoverUrl\n          genre {\n            edges {\n              node {\n                label\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n": types.BooksListDocument,
+    "\n  query genreList($label_In: [String]) {\n    genres(label_In: $label_In) {\n      edges {\n        node {\n          id\n          label\n        }\n      }\n    }\n  }\n": types.GenreListDocument,
 };
 
 /**
@@ -34,11 +35,15 @@ export function gql(source: string): unknown;
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "\n  query book($id: ID!) {\n    book(id: $id) {\n      id\n      title\n      summary\n      isbn\n    }\n  }\n"): (typeof documents)["\n  query book($id: ID!) {\n    book(id: $id) {\n      id\n      title\n      summary\n      isbn\n    }\n  }\n"];
+export function gql(source: "\n  query book($id: ID!) {\n    book(id: $id) {\n      id\n      title\n      summary\n      isbn\n      language\n      bookCoverUrl\n      publisher {\n        name\n      }\n      publicationDate\n    }\n  }\n"): (typeof documents)["\n  query book($id: ID!) {\n    book(id: $id) {\n      id\n      title\n      summary\n      isbn\n      language\n      bookCoverUrl\n      publisher {\n        name\n      }\n      publicationDate\n    }\n  }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "\n  query booksList {\n    books {\n      edges {\n        node {\n          id\n          summary\n          title\n          isbn\n          language\n          genre {\n            label\n          }\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query booksList {\n    books {\n      edges {\n        node {\n          id\n          summary\n          title\n          isbn\n          language\n          genre {\n            label\n          }\n        }\n      }\n    }\n  }\n"];
+export function gql(source: "\n  query booksList(\n    $language_In: [PeykhangapiBookLanguageChoices]\n    $genre_Label_In: [String]\n  ) {\n    books(language_In: $language_In, genre_Label_In: $genre_Label_In) {\n      edges {\n        node {\n          id\n          summary\n          title\n          isbn\n          language\n          bookCoverUrl\n          genre {\n            edges {\n              node {\n                label\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query booksList(\n    $language_In: [PeykhangapiBookLanguageChoices]\n    $genre_Label_In: [String]\n  ) {\n    books(language_In: $language_In, genre_Label_In: $genre_Label_In) {\n      edges {\n        node {\n          id\n          summary\n          title\n          isbn\n          language\n          bookCoverUrl\n          genre {\n            edges {\n              node {\n                label\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query genreList($label_In: [String]) {\n    genres(label_In: $label_In) {\n      edges {\n        node {\n          id\n          label\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query genreList($label_In: [String]) {\n    genres(label_In: $label_In) {\n      edges {\n        node {\n          id\n          label\n        }\n      }\n    }\n  }\n"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};

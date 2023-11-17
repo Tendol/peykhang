@@ -7,13 +7,23 @@ import React from 'react';
 // import { Book } from 'peykhang/gql/graphql';
 import { upperFirst, lowerCase } from 'lodash';
 import { BookNode, type Book } from '../../gql/graphql';
+import { Property } from 'csstype';
 
 export interface BooksData {
   books: {
     edges: [{ node: Book }];
   };
 }
-const BookCardList: React.FC = () => {
+
+interface BookCardListProp {
+  styles?: {
+    width?: string;
+    textAlign?: Property.TextAlign;
+    backgroundColor?: string;
+  };
+  title?: string;
+}
+const BookCardList = ({ styles, title }: BookCardListProp) => {
   const { loading, error, data } = useQuery<BooksData>(GET_BOOKS);
   const navigate = useNavigate();
   const { tag } = useParams();
@@ -31,13 +41,19 @@ const BookCardList: React.FC = () => {
       {loading ? (
         <Skeleton />
       ) : (
-        <Card style={{ width: '100%' }}>
+        <Card
+          style={{
+            width: styles?.width ?? '100%',
+            textAlign: styles?.textAlign,
+            backgroundColor: styles?.backgroundColor,
+            marginTop: '10vh',
+          }}
+        >
           {!tag ? (
-            <Typography.Title> Latest addition to peykhang </Typography.Title>
+            <Typography.Title> {title}</Typography.Title>
           ) : (
             <Typography.Title>
-              {' '}
-              {`${upperFirst(lowerCase(tag))} books`}{' '}
+              {`${upperFirst(lowerCase(tag))} books`}
             </Typography.Title>
           )}
           <Space wrap size="large">

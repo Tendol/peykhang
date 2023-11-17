@@ -1,14 +1,45 @@
 type Query {
-  books(language_In: [PeykhangapiBookLanguageChoices]): [BookConnection]
+  books(
+    language_In: [PeykhangapiBookLanguageChoices]
+    genre_Label_In: [String]
+  ): [BookConnection]
   book(id: ID!): Book
+  genres(label_In: [String]): [GenreConnection]
+  authors: [AuthorConnection]
+}
+
+enum PeykhangapiBookLanguageChoices {
+  TIBETAN
+  ENGLISH
+  SPANISH
+  CHINESE
+  HINDI
+  FRENCH
+  ITALIAN
 }
 
 type BookConnection {
   edges: [BookNode]
 }
 
+type GenreConnection {
+  edges: [GenreNode]
+}
+
+type AuthorConnection {
+  edges: [AuthorNode]
+}
+
 type BookNode {
   node: Book
+}
+
+type GenreNode {
+  node: Genre
+}
+
+type AuthorNode {
+  node: Author
 }
 
 type Book {
@@ -18,10 +49,26 @@ type Book {
   id: ID
   isbn: String
   language: String
-  genre: [GenreType]
+  genre: GenreConnection
+  bookCoverUrl: String
+  author: AuthorConnection
+  publisher: Publisher
+  publicationDate: String
 }
 
-type GenreType {
+type Genre {
   id: ID
   label: String
+}
+
+type Author {
+  id: ID
+  firstName: String
+  lastName: String
+  summary: String
+}
+
+type Publisher {
+  id: ID
+  name: String
 }

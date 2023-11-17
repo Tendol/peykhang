@@ -1,0 +1,30 @@
+.article {
+  position: relative;
+  overflow: hidden;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  align-items: 'center';
+  display: grid;
+  place-items: center;
+  width: '100%';
+}
+.image {
+  filter: contrast(0.9) brightness(0.9);
+  z-index: -1;
+  position: relative;
+  background-size: cover;
+}
+.image-text {
+  position: absolute;
+  text-shadow: 0 0 25px black;
+  color: white;
+}
+.article .ant-card-bordered {
+  border: 0px !important;
+}
+.article .ant-card {
+  background: None;
+}
+/*# sourceMappingURL=ImageCover.css.map */

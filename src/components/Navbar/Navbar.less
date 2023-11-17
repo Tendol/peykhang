@@ -1,25 +1,30 @@
-@navigation-header-background-color: #6349f7;
+@navigation-header-background-color: #00000026;
 @navigation-header-select-color: #4c2ee1;
 .header {
   height: auto;
   min-height: 64px;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  z-index: 1;
 }
 .ant-menu-dark .ant-menu-item-selected {
-  background-color: @navigation-header-background-color;
+  background-color: transparent;
 }
 
 .header {
   background-color: @navigation-header-background-color;
+  transition: background-color 200ms linear;
 }
 
 .ant-menu-dark {
-  background-color: @navigation-header-background-color;
+  background-color: transparent;
 }
 
 .ant-menu-dark.ant-menu-horizontal > .ant-menu-item-selected {
-  background-color: @navigation-header-background-color;
+  background-color: transparent;
 }
 
 .ant-menu-dark.ant-menu-horizontal > .ant-menu-item-selected:hover {
-  background-color: @navigation-header-select-color;
+  background-color: transparent;
 }

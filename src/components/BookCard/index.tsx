@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { Card } from 'antd';
-import Meta from 'antd/es/card/Meta';
 import { Book, Maybe } from '../../gql/graphql';
+import BookCover from '../../assets/we measure the earth with our bodies.jpeg';
+import { Image } from 'antd';
 
 interface BookCardProps {
   book?: Maybe<Book> | undefined;
@@ -12,25 +12,13 @@ const BookCard: React.FC<BookCardProps> = ({
   handleBookSelect,
 }: BookCardProps) => {
   return (
-    <Card
-      hoverable
-      style={{ width: '150px' }}
+    <Image
+      width={150}
+      src={book?.bookCoverUrl ?? BookCover}
       onClick={() => {
         handleBookSelect(book?.id);
       }}
-      // cover={
-      //   <img
-      //     alt={book?.title}
-      //     style={{ width: "150px" }}
-      //     src={book?.featuredImage?.node?.sourceUrl}
-      //   />
-      // }
-    >
-      <Meta
-        description={book?.title}
-        style={{ fontSize: '13px', fontWeight: 'bold', color: 'black' }}
-      />
-    </Card>
+    />
   );
 };
 

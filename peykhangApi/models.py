@@ -22,10 +22,24 @@ class Genre(models.Model):
         return self.label
 
 
+class Publisher(models.Model):
+    """Model representing the book publisher"""
+
+    name = models.CharField()
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.name
+
+
 class Book(models.Model):
     """Model representing a book (but not a specific copy of a book)."""
 
     title = models.CharField(max_length=200)
+
+    book_cover_url = models.TextField(
+        null=True, help_text="Enter the AWS S3 Bucket uri that stores the book cover"
+    )
 
     author = models.ManyToManyField("Author", help_text="Select the book author")
 
@@ -51,6 +65,16 @@ class Book(models.Model):
         choices=categories,
         help_text="Select the book category",
         default="fiction",
+    )
+
+    publisher = models.ForeignKey(
+        Publisher,
+        null=True,
+        help_text="Select the publisher",
+        on_delete=models.CASCADE,
+    )
+    publication_date = models.DateField(
+        null=True, blank=True, help_text="Book publication date"
     )
 
     """ Getting list of languages from config/settings.json file """
@@ -81,6 +105,9 @@ class Author(models.Model):
     last_name = models.CharField(max_length=100)
     date_of_birth = models.DateField(null=True, blank=True)
     date_of_death = models.DateField("Died", null=True, blank=True)
+    summary = models.TextField(
+        max_length=1000, help_text="Information about the author", null=True, blank=True
+    )
 
     class Meta:
         ordering = ["last_name", "first_name"]
