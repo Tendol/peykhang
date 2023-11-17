@@ -44,7 +44,7 @@ const Navbar = ({ imageSize }: NavbarProps) => {
         style={{
           color: 'white',
           float: 'left',
-          fontSize: '40px',
+          fontSize: '25px',
           fontWeight: 'bold',
           cursor: 'pointer',
         }}
@@ -66,7 +66,7 @@ const Navbar = ({ imageSize }: NavbarProps) => {
         }}
       >
         <Menu.Item key="books" style={{ float: 'right' }}>
-          <Typography.Text style={{ color: 'white', fontSize: '29px' }}>
+          <Typography.Text style={{ color: 'white', fontSize: '16px' }}>
             Books
           </Typography.Text>
           <Link to="/books" />
