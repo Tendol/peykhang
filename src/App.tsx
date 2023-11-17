@@ -11,7 +11,7 @@ import TypingTestHome from './components/TibGames/TypingTest/Home';
 import Navbar from './components/Navbar';
 import BookCatalogPage from './components/BookCatalogPage';
 
-export const breakpoint = 650;
+export const breakpoint = 800;
 
 const AppRoute = (): React.ReactElement<
   any,

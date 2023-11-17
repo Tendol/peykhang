@@ -20,10 +20,12 @@ interface BookCardListProp {
     width?: string;
     textAlign?: Property.TextAlign;
     backgroundColor?: string;
+    marginTop?: string;
   };
+  bordered?: boolean;
   title?: string;
 }
-const BookCardList = ({ styles, title }: BookCardListProp) => {
+const BookCardList = ({ styles, title, bordered = true }: BookCardListProp) => {
   const { loading, error, data } = useQuery<BooksData>(GET_BOOKS);
   const navigate = useNavigate();
   const { tag } = useParams();
@@ -36,17 +38,19 @@ const BookCardList = ({ styles, title }: BookCardListProp) => {
   const handleBookSelect = (id: string | null | undefined): void => {
     navigate(`/books/${id}`);
   };
+
   return (
     <>
       {loading ? (
         <Skeleton />
       ) : (
         <Card
+          bordered={false}
           style={{
             width: styles?.width ?? '100%',
             textAlign: styles?.textAlign,
             backgroundColor: styles?.backgroundColor,
-            marginTop: '10vh',
+            marginTop: styles?.marginTop,
           }}
         >
           {!tag ? (

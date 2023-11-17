@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { Space, Typography, Image, Descriptions, Card } from 'antd';
+import { Space, Typography, Image, Descriptions, Card, Row, Col } from 'antd';
 import { capitalize } from 'lodash';
 import { breakpoint } from '../../App';
 import BookCover from '../../assets/we measure the earth with our bodies.jpeg';
@@ -37,75 +37,75 @@ const BookDetail = ({ book }: BookDetailProps) => {
           width: '100%',
         }}
       >
-        <Space
-          direction="horizontal"
-          wrap={window.innerWidth <= breakpoint}
-          align="start"
-          size={50}
-        >
-          <Image
-            loading="eager"
-            width={window.innerWidth <= breakpoint ? 200 : 300}
-            src={book?.bookCoverUrl ?? BookCover}
-          />
-          <Space direction="vertical">
-            <Typography.Title> {book.title} </Typography.Title>
-            <Typography.Text style={{ fontSize: '16px' }}>
-              {book.summary}
-            </Typography.Text>
-            <br />
-            <Descriptions
-              layout="vertical"
-              column={4}
-              contentStyle={{ color: 'black' }}
-            >
-              {book?.publisher && (
-                <Descriptions.Item
-                  label="Published by :"
-                  labelStyle={LABEL_STYLE}
-                  contentStyle={CONTENT_STYLE}
-                >
-                  {capitalize(book?.publisher?.name ?? '')}
-                </Descriptions.Item>
-              )}
-              {book?.publicationDate && (
-                <Descriptions.Item
-                  label="Publication date :"
-                  labelStyle={LABEL_STYLE}
-                  contentStyle={CONTENT_STYLE}
-                >
-                  {capitalize(book?.publicationDate)}
-                </Descriptions.Item>
-              )}
-              {book?.language && (
-                <Descriptions.Item
-                  label={<GlobalOutlined style={{ fontSize: '40px' }} />}
-                  labelStyle={{
-                    display: 'inline-flex',
-                    flexDirection: 'row-reverse',
-                    color: 'black',
-                  }}
-                  contentStyle={CONTENT_STYLE}
-                >
-                  {capitalize(book?.language)}
-                </Descriptions.Item>
-              )}
-              {book?.isbn && (
-                <Descriptions.Item
-                  label={`ISBN - ${book?.isbn}`}
-                  labelStyle={LABEL_STYLE}
-                  contentStyle={CONTENT_STYLE}
-                >
-                  <Barcode
-                    value={book?.isbn}
-                    displayValue={false}
-                    height={50}
-                  />
-                </Descriptions.Item>
-              )}
-            </Descriptions>
-          </Space>
-        </Space>
+        <Row>
+          <Col xs={24} sm={24} md={8} lg={8} xl={8}>
+            <Image
+              loading="eager"
+              width={window.innerWidth <= breakpoint ? 150 : 300}
+              src={book?.bookCoverUrl ?? BookCover}
+            />
+          </Col>
+          <Col xs={24} sm={24} md={16} lg={16} xl={16}>
+            <Space direction="vertical">
+              <Typography.Title> {book.title} </Typography.Title>
+              <Typography.Text style={{ fontSize: '16px' }}>
+                {book.summary}
+              </Typography.Text>
+              <br />
+              <Descriptions
+                layout="vertical"
+                column={{ xs: 1, sm: 2, md: 3, lg: 4 }}
+                contentStyle={{ color: 'black' }}
+                size="small"
+              >
+                {book?.publisher && (
+                  <Descriptions.Item
+                    label="Published by :"
+                    labelStyle={LABEL_STYLE}
+                    contentStyle={CONTENT_STYLE}
+                  >
+                    {capitalize(book?.publisher?.name ?? '')}
+                  </Descriptions.Item>
+                )}
+                {book?.publicationDate && (
+                  <Descriptions.Item
+                    label="Publication date :"
+                    labelStyle={LABEL_STYLE}
+                    contentStyle={CONTENT_STYLE}
+                  >
+                    {capitalize(book?.publicationDate)}
+                  </Descriptions.Item>
+                )}
+                {book?.language && (
+                  <Descriptions.Item
+                    label={<GlobalOutlined style={{ fontSize: '40px' }} />}
+                    labelStyle={{
+                      display: 'inline-flex',
+                      flexDirection: 'row-reverse',
+                      color: 'black',
+                    }}
+                    contentStyle={CONTENT_STYLE}
+                  >
+                    {capitalize(book?.language)}
+                  </Descriptions.Item>
+                )}
+                {book?.isbn && (
+                  <Descriptions.Item
+                    label={`ISBN - ${book?.isbn}`}
+                    labelStyle={LABEL_STYLE}
+                    contentStyle={CONTENT_STYLE}
+                  >
+                    <Barcode
+                      value={book?.isbn}
+                      displayValue={false}
+                      height={50}
+                    />
+                  </Descriptions.Item>
+                )}
+              </Descriptions>
+            </Space>
+          </Col>
+        </Row>
       </Card>
     </>
   );

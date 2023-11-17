@@ -51,7 +51,7 @@ type Book {
   language: String
   genre: GenreConnection
   bookCoverUrl: String
-  author: AuthorConnection
+  authors: AuthorConnection
   publisher: Publisher
   publicationDate: String
 }

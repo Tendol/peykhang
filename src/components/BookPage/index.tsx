@@ -4,7 +4,8 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import { GET_BOOK } from '../../graphql/hooks/getBook';
-import { Skeleton, message } from 'antd';
+import { Card, Skeleton, message } from 'antd';
+import BookCardList from '../BookCardList';
 
 const BookPage = () => {
   const { id } = useParams();
@@ -19,7 +20,6 @@ const BookPage = () => {
       'There is an issue loading the book. We will fix it as soon as possible',
     );
   }
-
   return (
     <>
       {loading ? (
@@ -27,7 +27,16 @@ const BookPage = () => {
       ) : (
         <>
           <BookDetail book={data?.book} />
-          <AuthorDetail />
+          <AuthorDetail authors={data?.book?.authors} />
+          <Card
+            bordered={false}
+            bodyStyle={{
+              paddingLeft: '10vh',
+              paddingRight: '10vh',
+            }}
+          >
+            <BookCardList bordered={false} title="Other books by the author" />
+          </Card>
         </>
       )}
     </>

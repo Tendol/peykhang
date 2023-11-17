@@ -41,7 +41,7 @@ class Book(models.Model):
         null=True, help_text="Enter the AWS S3 Bucket uri that stores the book cover"
     )
 
-    author = models.ManyToManyField("Author", help_text="Select the book author")
+    authors = models.ManyToManyField("Author", help_text="Select the book author")
 
     summary = models.TextField(
         max_length=1000, null=True, help_text="Enter a brief description of the book"

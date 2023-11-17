@@ -1,9 +1,14 @@
-import { Card, Space, Image, Typography } from 'antd';
+import { Card, Space, Image, Typography, Col, Row, Divider } from 'antd';
 import { breakpoint } from '../../App';
 import React from 'react';
 import BookCover from '../../assets/we measure the earth with our bodies.jpeg';
+import { AuthorConnection, AuthorNode, Maybe } from '../../gql/graphql';
 
-const AuthorDetail = () => {
+interface AuthorDetailProps {
+  authors: AuthorConnection;
+}
+
+const AuthorDetail = ({ authors }: AuthorDetailProps) => {
   return (
     <Card
       bordered={false}
@@ -17,27 +22,31 @@ const AuthorDetail = () => {
         width: '100%',
       }}
     >
-      <Space
-        direction="horizontal"
-        wrap={window.innerWidth <= breakpoint}
-        align="start"
-        size={50}
-      >
-        <Space direction="vertical">
-          <Typography.Title> Authors</Typography.Title>
-
-          <Image
-            loading="eager"
-            width={window.innerWidth <= breakpoint ? 120 : 170}
-            src={BookCover}
-          />
-        </Space>
-        <Space direction="vertical">
-          {/* <Typography.Title> {book.title} </Typography.Title>
-          <Typography.Text style={{ fontSize: '16px' }}>
-            {book.summary}
-          </Typography.Text> */}
-        </Space>
+      <Typography.Title> Authors </Typography.Title>
+      <Space direction="vertical" style={{ width: '100%' }}>
+        {authors?.edges?.map((author: Maybe<AuthorNode>) => (
+          // eslint-disable-next-line react/jsx-key
+          <>
+            <Row style={{ width: '100%' }}>
+              <Col xs={24} sm={4} md={6} lg={8} xl={8}>
+                <Image
+                  loading="eager"
+                  width={window.innerWidth <= breakpoint ? 100 : 170}
+                  src={BookCover}
+                />
+              </Col>
+              <Col xs={24} sm={20} md={18} lg={16} xl={16}>
+                <Space direction="vertical">
+                  <Typography.Title>
+                    {`${author?.node?.firstName} ${author?.node?.lastName}`}
+                  </Typography.Title>
+                  <Typography.Text>{author?.node?.summary}</Typography.Text>
+                </Space>
+              </Col>
+            </Row>
+            <Divider />
+          </>
+        ))}
       </Space>
     </Card>
   );

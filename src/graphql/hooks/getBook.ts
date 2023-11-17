@@ -12,6 +12,16 @@ export const GET_BOOK = gql`
       publisher {
         name
       }
+      authors {
+        edges {
+          node {
+            id
+            firstName
+            lastName
+            summary
+          }
+        }
+      }
       publicationDate
     }
   }

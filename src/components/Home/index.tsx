@@ -18,6 +18,7 @@ const Home: React.FC = () => {
             width: '50%',
             textAlign: 'center',
             backgroundColor: '#F8F8F8',
+            marginTop: '10vh',
           }}
           title="Peykhang recommendation of the month"
         />

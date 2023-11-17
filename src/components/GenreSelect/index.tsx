@@ -23,8 +23,6 @@ const GenreSelect = ({ onChange }: GenreSelectProps) => {
       }))
     : [];
 
-  console.log({ genreOptions });
-
   return (
     <Select
       showSearch
