@@ -66,6 +66,7 @@ type Author {
   firstName: String
   lastName: String
   summary: String
+  authorImageUrl: String
 }
 
 type Publisher {

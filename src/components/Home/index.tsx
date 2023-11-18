@@ -5,12 +5,13 @@ import ImageCover from '../ImageCover';
 const Home: React.FC = () => {
   return (
     <>
-      <ImageCover />
+      {/* <ImageCover /> */}
       <div
         style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          height: '100%',
         }}
       >
         <BookCardList

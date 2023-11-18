@@ -18,6 +18,7 @@ export type Scalars = {
 
 export type Author = {
   __typename?: 'Author';
+  authorImageUrl?: Maybe<Scalars['String']['output']>;
   firstName?: Maybe<Scalars['String']['output']>;
   id?: Maybe<Scalars['ID']['output']>;
   lastName?: Maybe<Scalars['String']['output']>;

@@ -51,6 +51,7 @@ const BookCardList = ({ styles, title, bordered = true }: BookCardListProp) => {
             textAlign: styles?.textAlign,
             backgroundColor: styles?.backgroundColor,
             marginTop: styles?.marginTop,
+            boxShadow: 'None',
           }}
         >
           {!tag ? (

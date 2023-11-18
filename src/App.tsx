@@ -33,7 +33,7 @@ const AppWrapper: React.FC = () => {
     <ApolloProvider client={client}>
       <Router>
         <Navbar imageSize={0.4} />
-        <div style={{ minHeight: 'calc(100vh - 150px)', width: '100%' }}>
+        <div style={{ minHeight: 'calc(100vh - 100px)', width: '100%' }}>
           <AppRoute />
         </div>
         <PeykhangFooter />

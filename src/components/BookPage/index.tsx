@@ -20,6 +20,11 @@ const BookPage = () => {
       'There is an issue loading the book. We will fix it as soon as possible',
     );
   }
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       {loading ? (

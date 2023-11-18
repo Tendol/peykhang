@@ -37,12 +37,12 @@ const Navbar = ({ imageSize }: NavbarProps) => {
         alignItems: 'center',
         overflow: 'hidden',
         width: '100%',
-        backgroundColor: changeColor ? '#997965' : undefined,
+        // backgroundColor: changeColor ? '#997965' : undefined,
       }}
     >
       <div
         style={{
-          color: 'white',
+          color: 'black',
           float: 'left',
           fontSize: '25px',
           fontWeight: 'bold',
@@ -66,7 +66,7 @@ const Navbar = ({ imageSize }: NavbarProps) => {
         }}
       >
         <Menu.Item key="books" style={{ float: 'right' }}>
-          <Typography.Text style={{ color: 'white', fontSize: '16px' }}>
+          <Typography.Text style={{ color: 'black', fontSize: '16px' }}>
             Books
           </Typography.Text>
           <Link to="/books" />

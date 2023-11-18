@@ -32,7 +32,7 @@ const AuthorDetail = ({ authors }: AuthorDetailProps) => {
                 <Image
                   loading="eager"
                   width={window.innerWidth <= breakpoint ? 100 : 170}
-                  src={BookCover}
+                  src={author?.node?.authorImageUrl || BookCover}
                 />
               </Col>
               <Col xs={24} sm={20} md={18} lg={16} xl={16}>

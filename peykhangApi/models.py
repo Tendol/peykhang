@@ -108,6 +108,9 @@ class Author(models.Model):
     summary = models.TextField(
         max_length=1000, help_text="Information about the author", null=True, blank=True
     )
+    author_image_url = models.CharField(
+        help_text="Author Image URL", null=True, blank=True
+    )
 
     class Meta:
         ordering = ["last_name", "first_name"]
