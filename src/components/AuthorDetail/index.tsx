@@ -27,12 +27,12 @@ const AuthorDetail = ({ authors }: AuthorDetailProps) => {
         {authors?.edges?.map((author: Maybe<AuthorNode>) => (
           // eslint-disable-next-line react/jsx-key
           <>
-            <Row style={{ width: '100%' }}>
+            <Row style={{ width: '100%' }} key={author?.node?.id}>
               <Col xs={24} sm={4} md={6} lg={8} xl={8}>
                 <Image
                   loading="eager"
                   width={window.innerWidth <= breakpoint ? 100 : 170}
-                  src={author?.node?.authorImageUrl || BookCover}
+                  src={author?.node?.authorImageUrl ?? BookCover}
                 />
               </Col>
               <Col xs={24} sm={20} md={18} lg={16} xl={16}>

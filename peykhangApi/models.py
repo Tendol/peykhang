@@ -1,6 +1,7 @@
 from django.db import models
 import json
 from pathlib import Path
+from ckeditor.fields import RichTextField
 
 
 class Genre(models.Model):
@@ -46,6 +47,11 @@ class Book(models.Model):
     summary = models.TextField(
         max_length=1000, null=True, help_text="Enter a brief description of the book"
     )
+
+    rich_text_summary = RichTextField(
+        null=True,
+    )
+
     isbn = models.CharField(
         "ISBN",
         max_length=13,

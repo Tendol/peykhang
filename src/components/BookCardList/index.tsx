@@ -64,7 +64,11 @@ const BookCardList = ({ styles, title, bordered = true }: BookCardListProp) => {
           <Space wrap size="large">
             {data?.books?.edges?.map(({ node }: BookNode) => (
               // eslint-disable-next-line react/jsx-key
-              <BookCard book={node} handleBookSelect={handleBookSelect} />
+              <BookCard
+                key={node?.id}
+                book={node}
+                handleBookSelect={handleBookSelect}
+              />
             ))}
           </Space>
         </Card>

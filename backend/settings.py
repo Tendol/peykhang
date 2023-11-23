@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     "graphene_django",
     "peykhangApi",
     "django_filters",
+    "ckeditor",
 ]
 
 MIDDLEWARE = [

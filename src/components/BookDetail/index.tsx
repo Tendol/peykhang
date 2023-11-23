@@ -7,6 +7,7 @@ import { GlobalOutlined } from '@ant-design/icons';
 import './BookDetail.css';
 import Barcode from 'react-barcode';
 import { Book } from '../../gql/graphql';
+import HtmlMarkdown from '../HtmlMarkdown';
 
 const LABEL_STYLE = {
   fontWeight: 'bold',
@@ -48,9 +49,9 @@ const BookDetail = ({ book }: BookDetailProps) => {
           <Col xs={24} sm={24} md={16} lg={16} xl={16}>
             <Space direction="vertical">
               <Typography.Title> {book.title} </Typography.Title>
-              <Typography.Text style={{ fontSize: '16px' }}>
-                {book.summary}
-              </Typography.Text>
+              <HtmlMarkdown style={{ fontSize: '16px' }}>
+                {book.richTextSummary ?? ''}
+              </HtmlMarkdown>
               <br />
               <Descriptions
                 layout="vertical"

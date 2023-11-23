@@ -9,6 +9,7 @@ export const GET_BOOK = gql`
       isbn
       language
       bookCoverUrl
+      richTextSummary
       publisher {
         name
       }

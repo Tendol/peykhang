@@ -54,6 +54,7 @@ type Book {
   authors: AuthorConnection
   publisher: Publisher
   publicationDate: String
+  richTextSummary: String
 }
 
 type Genre {
