@@ -6,6 +6,7 @@ type Query {
   book(id: ID!): Book
   genres(label_In: [String]): [GenreConnection]
   authors: [AuthorConnection]
+  publishers: [PublisherConnection]
 }
 
 enum PeykhangapiBookLanguageChoices {
@@ -17,6 +18,8 @@ enum PeykhangapiBookLanguageChoices {
   FRENCH
   ITALIAN
 }
+
+###### Connection #####
 
 type BookConnection {
   edges: [BookNode]
@@ -30,6 +33,12 @@ type AuthorConnection {
   edges: [AuthorNode]
 }
 
+type PublisherConnection {
+  edges: [PublisherNode]
+}
+
+#### Node #####
+
 type BookNode {
   node: Book
 }
@@ -41,6 +50,12 @@ type GenreNode {
 type AuthorNode {
   node: Author
 }
+
+type PublisherNode {
+  node: Publisher
+}
+
+#### Model ####
 
 type Book {
   # bookMetaData: BookMetaData
