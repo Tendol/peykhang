@@ -10,6 +10,7 @@ import BookCardList from './components/BookCardList';
 import TypingTestHome from './components/TibGames/TypingTest/Home';
 import Navbar from './components/Navbar';
 import BookCatalogPage from './components/BookCatalogPage';
+import AddBook from './components/AddBook';
 
 export const breakpoint = 800;
 
@@ -23,6 +24,7 @@ const AppRoute = (): React.ReactElement<
     { path: '/books/:id', element: <BookPage /> },
     { path: '/books/tags/:tag', element: <BookCardList /> },
     { path: '/games/typingGame', element: <TypingTestHome /> },
+    { path: '/book/add', element: <AddBook /> },
     { path: '*', element: <Home /> },
   ]);
   return routes;

@@ -12,24 +12,6 @@ interface NavbarProps {
 const Navbar = ({ imageSize }: NavbarProps) => {
   const navigate = useNavigate();
 
-  const [changeColor, setChangeColor] = React.useState(false);
-
-  const listenScrollEvent = () => {
-    if (window.scrollY < window.innerHeight * imageSize) {
-      setChangeColor(false);
-    } else if (window.scrollY > window.innerHeight * imageSize - 1) {
-      setChangeColor(true);
-    }
-  };
-
-  React.useEffect(() => {
-    window.addEventListener('scroll', listenScrollEvent);
-
-    return () => {
-      window.removeEventListener('scroll', listenScrollEvent);
-    };
-  }, []);
-
   return (
     <Header
       className="header"
@@ -70,6 +52,12 @@ const Navbar = ({ imageSize }: NavbarProps) => {
             Books
           </Typography.Text>
           <Link to="/books" />
+        </Menu.Item>
+        <Menu.Item key="books" style={{ float: 'right' }}>
+          <Typography.Text style={{ color: 'black', fontSize: '16px' }}>
+            Add Book
+          </Typography.Text>
+          <Link to="/book/add" />
         </Menu.Item>
       </Menu>
     </Header>

@@ -4,6 +4,9 @@ from peykhangApi.models import Author, Book, Genre, Publisher
 from django_filters import FilterSet
 
 
+### Graphene filter ####
+
+
 class BookFilter(FilterSet):
     class Meta:
         model = Book
@@ -25,6 +28,15 @@ class GenreFilter(FilterSet):
     class Meta:
         model = Genre
         fields = {"label": ["exact", "in"]}
+
+
+class PublisherFilter(FilterSet):
+    class Meta:
+        mode = Publisher
+        fields = {"name": ["exact", "in"]}
+
+
+#### Graphene Type ####
 
 
 class GenreType(DjangoObjectType):
@@ -55,3 +67,11 @@ class AuthorType(DjangoObjectType):
         fields = "__all__"
         interfaces = (graphene.relay.Node,)
         filterset_class = AuthorFilter
+
+
+class PublisherType(DjangoObjectType):
+    class Meta:
+        model = Publisher
+        fields = "__all__"
+        interfaces = (graphene.relay.Node,)
+        filterset_class = PublisherFilter

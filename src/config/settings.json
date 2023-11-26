@@ -7,5 +7,36 @@
     "hindi": "Hindi",
     "french": "French",
     "italian": "Italian"
+  },
+
+  "languagesCode": {
+    "bo": {
+      "label": "Tibetan",
+      "value": "bo"
+    },
+    "en": {
+      "label": "English",
+      "value": "en"
+    },
+    "es": {
+      "label": "Spanish",
+      "value": "es"
+    },
+    "zh": {
+      "label": "Chinese",
+      "value": "zh"
+    },
+    "hi": {
+      "label": "Hindi",
+      "value": "hi"
+    },
+    "fr": {
+      "label": "French",
+      "value": "fr"
+    },
+    "it": {
+      "label": "Italian",
+      "value": "it"
+    }
   }
 }
