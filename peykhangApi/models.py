@@ -62,7 +62,9 @@ class Book(models.Model):
 
     # ManyToManyField used because genre can contain many books. Books can cover many genres.
     # Genre class has already been defined so we can specify the object above.
-    genre = models.ManyToManyField(Genre, help_text="Select a genre for this book")
+    genre = models.ManyToManyField(
+        Genre, help_text="Select a genre for this book", null=True
+    )
 
     # A book can either be fiction or non fiction
     categories = {("fiction", "Fiction"), ("non_fiction", "Non Fiction")}

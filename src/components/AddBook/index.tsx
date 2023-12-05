@@ -4,11 +4,12 @@ import settings from '../../config/settings.json';
 import AntdTinymce from '../AntdTinymce';
 import { GET_GENRES } from '../../graphql/hooks/getGenres';
 import { Author, Genre, Publisher } from '../../gql/graphql';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import _ from 'lodash';
 import { GET_AUTHORS } from '../../graphql/hooks/getAuthors';
 import longName from '../Helpers/longName';
 import { GET_PUBLISHERS } from '../../graphql/hooks/getPublishers';
+import { CREATE_BOOK } from '../../graphql/hooks/createBook';
 
 export interface GenresData {
   genres: {
@@ -28,15 +29,13 @@ export interface PublisherData {
   };
 }
 const AddBook = () => {
-  const onFinish = (values: any) => {
-    console.log('mutation');
-  };
   const languageOptions = Object.values(settings.languagesCode).map(
     (item) => item,
   );
   const { data } = useQuery<GenresData>(GET_GENRES);
   const { data: AuthorData } = useQuery<AuthorsData>(GET_AUTHORS);
   const { data: PublisherData } = useQuery<PublisherData>(GET_PUBLISHERS);
+  const [createBookMutation, { loading, error }] = useMutation(CREATE_BOOK);
 
   const GenreOptions = data?.genres?.edges?.map((item) => ({
     label: _.capitalize(item.node.label ?? ''),
@@ -52,6 +51,17 @@ const AddBook = () => {
     label: _.capitalize(item?.node?.name ?? ''),
     value: item?.node?.id,
   }));
+
+  const onFinish = (values: any) => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    createBookMutation({
+      variables: {
+        input: {
+          title: values?.title,
+        },
+      },
+    });
+  };
 
   return (
     <Card
@@ -70,7 +80,7 @@ const AddBook = () => {
         >
           <Input />
         </Form.Item>
-        <Form.Item
+        {/* <Form.Item
           label="ISBN"
           name="isbn"
           rules={[
@@ -145,7 +155,7 @@ const AddBook = () => {
           ]}
         >
           <AntdTinymce initialValue="" />
-        </Form.Item>
+        </Form.Item> */}
         <Form.Item>
           <Button type="primary" htmlType="submit">
             Submit
