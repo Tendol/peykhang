@@ -3,5 +3,6 @@
 }
 .ant-descriptions .ant-descriptions-item-container .ant-descriptions-item-label {
   padding: 0 !important;
+  margin-inline: 0 !important;
 }
 /*# sourceMappingURL=BookDetail.css.map */

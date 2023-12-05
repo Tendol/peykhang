@@ -1,22 +1,11 @@
-type Query {
-  books(
-    language_In: [PeykhangapiBookLanguageChoices]
-    genre_Label_In: [String]
-  ): [BookConnection]
-  book(id: ID!): Book
-  genres(label_In: [String]): [GenreConnection]
-  authors: [AuthorConnection]
-  publishers: [PublisherConnection]
-}
-
 enum PeykhangapiBookLanguageChoices {
-  TIBETAN
-  ENGLISH
-  SPANISH
-  CHINESE
-  HINDI
-  FRENCH
-  ITALIAN
+  bo
+  en
+  es
+  zh
+  hi
+  fr
+  it
 }
 
 ###### Connection #####
@@ -88,4 +77,36 @@ type Author {
 type Publisher {
   id: ID
   name: String
+}
+
+#### Mutation Input Type ####
+
+type CreateBook {
+  book: Book
+}
+
+input BookInput {
+  title: String
+  richTextSummary: String
+  isbn: String
+  category: String
+  authorsId: [String]
+  genresId: [String]
+  language: String
+  publisherId: String
+  publicationDate: String
+}
+
+type Query {
+  books(
+    language_In: [PeykhangapiBookLanguageChoices]
+    genre_Label_In: [String]
+  ): [BookConnection]
+  book(id: ID!): Book
+  genres(label_In: [String]): [GenreConnection]
+  authors: [AuthorConnection]
+  publishers: [PublisherConnection]
+}
+type Mutation {
+  createBook(input: BookInput!): CreateBook
 }
