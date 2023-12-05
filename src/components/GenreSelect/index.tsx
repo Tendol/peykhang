@@ -1,7 +1,7 @@
 import { Select } from 'antd';
 import React from 'react';
 import { GenreNode } from '../../gql/graphql';
-import { GET_GENRES } from '../../graphql/hooks/GetGenres';
+import { GET_GENRES } from '../../graphql/hooks/getGenres';
 import { useQuery } from '@apollo/client';
 import _ from 'lodash';
 

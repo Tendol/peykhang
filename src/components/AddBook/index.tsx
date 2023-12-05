@@ -2,15 +2,15 @@ import { Button, Card, DatePicker, Form, Input, Select, message } from 'antd';
 import React from 'react';
 import settings from '../../config/settings.json';
 import AntdTinymce from '../AntdTinymce';
-import { GET_GENRES } from '../../graphql/hooks/GetGenres';
+import { GET_GENRES } from '../../graphql/hooks/getGenres';
 import { Author, Genre, Publisher } from '../../gql/graphql';
 import { useMutation, useQuery } from '@apollo/client';
 import _ from 'lodash';
-import { GET_AUTHORS } from '../../graphql/hooks/GetAuthors';
+import { GET_AUTHORS } from '../../graphql/hooks/getAuthors';
 import longName from '../Helpers/longName';
-import { GET_PUBLISHERS } from '../../graphql/hooks/GetPublishers';
-import { GET_BOOKS } from '../../graphql/hooks/GetBooks';
-import { CREATE_BOOK } from '../../graphql/hooks/CreateBook';
+import { GET_PUBLISHERS } from '../../graphql/hooks/getPublishers';
+import { GET_BOOKS } from '../../graphql/hooks/getBooks';
+import { CREATE_BOOK } from '../../graphql/hooks/createBook';
 
 export interface GenresData {
   genres: {
