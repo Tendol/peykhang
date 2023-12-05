@@ -21,7 +21,6 @@ poppler-utils==0.1.0
 postgres==4.0
 promise==2.3
 psycopg2-binary==2.9.6
-psycopg2-pool==1.1
 six==1.16.0
 sqlparse==0.4.4
 stringcase==1.2.0
