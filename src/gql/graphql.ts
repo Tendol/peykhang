@@ -55,9 +55,26 @@ export type BookConnection = {
   edges?: Maybe<Array<Maybe<BookNode>>>;
 };
 
+export type BookInput = {
+  authorsId?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  category?: InputMaybe<Scalars['String']['input']>;
+  genresId?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  isbn?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<Scalars['String']['input']>;
+  publicationDate?: InputMaybe<Scalars['String']['input']>;
+  publisherId?: InputMaybe<Scalars['String']['input']>;
+  richTextSummary?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type BookNode = {
   __typename?: 'BookNode';
   node?: Maybe<Book>;
+};
+
+export type CreateBook = {
+  __typename?: 'CreateBook';
+  book?: Maybe<Book>;
 };
 
 export type Genre = {
@@ -76,14 +93,24 @@ export type GenreNode = {
   node?: Maybe<Genre>;
 };
 
+export type Mutation = {
+  __typename?: 'Mutation';
+  createBook?: Maybe<CreateBook>;
+};
+
+
+export type MutationCreateBookArgs = {
+  input: BookInput;
+};
+
 export enum PeykhangapiBookLanguageChoices {
-  Chinese = 'CHINESE',
-  English = 'ENGLISH',
-  French = 'FRENCH',
-  Hindi = 'HINDI',
-  Italian = 'ITALIAN',
-  Spanish = 'SPANISH',
-  Tibetan = 'TIBETAN'
+  Bo = 'bo',
+  En = 'en',
+  Es = 'es',
+  Fr = 'fr',
+  Hi = 'hi',
+  It = 'it',
+  Zh = 'zh'
 }
 
 export type Publisher = {
@@ -145,7 +172,7 @@ export type BooksListQueryVariables = Exact<{
 }>;
 
 
-export type BooksListQuery = { __typename?: 'Query', books?: Array<{ __typename?: 'BookConnection', edges?: Array<{ __typename?: 'BookNode', node?: { __typename?: 'Book', id?: string | null, summary?: string | null, title?: string | null, isbn?: string | null, language?: string | null, bookCoverUrl?: string | null, publicationDate?: string | null, genre?: { __typename?: 'GenreConnection', edges?: Array<{ __typename?: 'GenreNode', node?: { __typename?: 'Genre', label?: string | null } | null } | null> | null } | null } | null } | null> | null } | null> | null };
+export type BooksListQuery = { __typename?: 'Query', books?: Array<{ __typename?: 'BookConnection', edges?: Array<{ __typename?: 'BookNode', node?: { __typename?: 'Book', id?: string | null, title?: string | null, summary?: string | null, isbn?: string | null, language?: string | null, bookCoverUrl?: string | null, richTextSummary?: string | null, publicationDate?: string | null, publisher?: { __typename?: 'Publisher', name?: string | null } | null, genre?: { __typename?: 'GenreConnection', edges?: Array<{ __typename?: 'GenreNode', node?: { __typename?: 'Genre', label?: string | null } | null } | null> | null } | null, authors?: { __typename?: 'AuthorConnection', edges?: Array<{ __typename?: 'AuthorNode', node?: { __typename?: 'Author', id?: string | null, firstName?: string | null, lastName?: string | null, summary?: string | null, authorImageUrl?: string | null } | null } | null> | null } | null } | null } | null> | null } | null> | null };
 
 export type GenreListQueryVariables = Exact<{
   label_In?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
@@ -159,9 +186,17 @@ export type GetPublishersQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetPublishersQuery = { __typename?: 'Query', publishers?: Array<{ __typename?: 'PublisherConnection', edges?: Array<{ __typename?: 'PublisherNode', node?: { __typename?: 'Publisher', id?: string | null, name?: string | null } | null } | null> | null } | null> | null };
 
+export type CreateBookMutationVariables = Exact<{
+  input: BookInput;
+}>;
+
+
+export type CreateBookMutation = { __typename?: 'Mutation', createBook?: { __typename?: 'CreateBook', book?: { __typename?: 'Book', id?: string | null, title?: string | null, summary?: string | null, isbn?: string | null, language?: string | null, bookCoverUrl?: string | null, richTextSummary?: string | null, publicationDate?: string | null, publisher?: { __typename?: 'Publisher', name?: string | null } | null, genre?: { __typename?: 'GenreConnection', edges?: Array<{ __typename?: 'GenreNode', node?: { __typename?: 'Genre', label?: string | null } | null } | null> | null } | null, authors?: { __typename?: 'AuthorConnection', edges?: Array<{ __typename?: 'AuthorNode', node?: { __typename?: 'Author', id?: string | null, firstName?: string | null, lastName?: string | null, summary?: string | null, authorImageUrl?: string | null } | null } | null> | null } | null } | null } | null };
+
 
 export const GetAuthorsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetAuthors"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"authors"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"summary"}},{"kind":"Field","name":{"kind":"Name","value":"authorImageUrl"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetAuthorsQuery, GetAuthorsQueryVariables>;
 export const BookDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"book"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"book"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"summary"}},{"kind":"Field","name":{"kind":"Name","value":"isbn"}},{"kind":"Field","name":{"kind":"Name","value":"language"}},{"kind":"Field","name":{"kind":"Name","value":"bookCoverUrl"}},{"kind":"Field","name":{"kind":"Name","value":"richTextSummary"}},{"kind":"Field","name":{"kind":"Name","value":"publisher"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","name":{"kind":"Name","value":"authors"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"summary"}},{"kind":"Field","name":{"kind":"Name","value":"authorImageUrl"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"publicationDate"}}]}}]}}]} as unknown as DocumentNode<BookQuery, BookQueryVariables>;
-export const BooksListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"booksList"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"language_In"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"PeykhangapiBookLanguageChoices"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"genre_Label_In"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"books"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"language_In"},"value":{"kind":"Variable","name":{"kind":"Name","value":"language_In"}}},{"kind":"Argument","name":{"kind":"Name","value":"genre_Label_In"},"value":{"kind":"Variable","name":{"kind":"Name","value":"genre_Label_In"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"summary"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"isbn"}},{"kind":"Field","name":{"kind":"Name","value":"language"}},{"kind":"Field","name":{"kind":"Name","value":"bookCoverUrl"}},{"kind":"Field","name":{"kind":"Name","value":"publicationDate"}},{"kind":"Field","name":{"kind":"Name","value":"genre"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"label"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<BooksListQuery, BooksListQueryVariables>;
+export const BooksListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"booksList"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"language_In"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"PeykhangapiBookLanguageChoices"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"genre_Label_In"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"books"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"language_In"},"value":{"kind":"Variable","name":{"kind":"Name","value":"language_In"}}},{"kind":"Argument","name":{"kind":"Name","value":"genre_Label_In"},"value":{"kind":"Variable","name":{"kind":"Name","value":"genre_Label_In"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"summary"}},{"kind":"Field","name":{"kind":"Name","value":"isbn"}},{"kind":"Field","name":{"kind":"Name","value":"language"}},{"kind":"Field","name":{"kind":"Name","value":"bookCoverUrl"}},{"kind":"Field","name":{"kind":"Name","value":"richTextSummary"}},{"kind":"Field","name":{"kind":"Name","value":"publisher"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","name":{"kind":"Name","value":"genre"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"label"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"authors"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"summary"}},{"kind":"Field","name":{"kind":"Name","value":"authorImageUrl"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"publicationDate"}}]}}]}}]}}]}}]} as unknown as DocumentNode<BooksListQuery, BooksListQueryVariables>;
 export const GenreListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"genreList"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"label_In"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"genres"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"label_In"},"value":{"kind":"Variable","name":{"kind":"Name","value":"label_In"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"label"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GenreListQuery, GenreListQueryVariables>;
 export const GetPublishersDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetPublishers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"publishers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetPublishersQuery, GetPublishersQueryVariables>;
+export const CreateBookDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateBook"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"BookInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createBook"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"book"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"summary"}},{"kind":"Field","name":{"kind":"Name","value":"isbn"}},{"kind":"Field","name":{"kind":"Name","value":"language"}},{"kind":"Field","name":{"kind":"Name","value":"bookCoverUrl"}},{"kind":"Field","name":{"kind":"Name","value":"richTextSummary"}},{"kind":"Field","name":{"kind":"Name","value":"publisher"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","name":{"kind":"Name","value":"genre"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"label"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"authors"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"summary"}},{"kind":"Field","name":{"kind":"Name","value":"authorImageUrl"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"publicationDate"}}]}}]}}]}}]} as unknown as DocumentNode<CreateBookMutation, CreateBookMutationVariables>;

@@ -1,14 +1,16 @@
-import { Button, Card, DatePicker, Form, Input, Select } from 'antd';
+import { Button, Card, DatePicker, Form, Input, Select, message } from 'antd';
 import React from 'react';
 import settings from '../../config/settings.json';
 import AntdTinymce from '../AntdTinymce';
-import { GET_GENRES } from '../../graphql/hooks/getGenres';
+import { GET_GENRES } from '../../graphql/hooks/GetGenres';
 import { Author, Genre, Publisher } from '../../gql/graphql';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import _ from 'lodash';
-import { GET_AUTHORS } from '../../graphql/hooks/getAuthors';
+import { GET_AUTHORS } from '../../graphql/hooks/GetAuthors';
 import longName from '../Helpers/longName';
-import { GET_PUBLISHERS } from '../../graphql/hooks/getPublishers';
+import { GET_PUBLISHERS } from '../../graphql/hooks/GetPublishers';
+import { CREATE_BOOK } from '../../graphql/hooks/createBook';
+import { GET_BOOKS } from '../../graphql/hooks/GetBooks';
 
 export interface GenresData {
   genres: {
@@ -28,18 +30,21 @@ export interface PublisherData {
   };
 }
 const AddBook = () => {
-  const onFinish = (values: any) => {
-    console.log('mutation');
-  };
   const languageOptions = Object.values(settings.languagesCode).map(
     (item) => item,
   );
   const { data } = useQuery<GenresData>(GET_GENRES);
   const { data: AuthorData } = useQuery<AuthorsData>(GET_AUTHORS);
   const { data: PublisherData } = useQuery<PublisherData>(GET_PUBLISHERS);
+  const [createBookMutation, { loading: addingBook, error }] = useMutation(
+    CREATE_BOOK,
+    {
+      refetchQueries: [{ query: GET_BOOKS }],
+    },
+  );
 
   const GenreOptions = data?.genres?.edges?.map((item) => ({
-    label: _.capitalize(item.node.label ?? ''),
+    label: _.capitalize(item.node.label?.split('_').join(' ') ?? ''),
     value: item.node.id,
   }));
 
@@ -53,6 +58,32 @@ const AddBook = () => {
     value: item?.node?.id,
   }));
 
+  const onFinish = (values: any) => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    createBookMutation({
+      variables: {
+        input: {
+          title: values?.title,
+          isbn: values?.isbn,
+          category: values?.categories,
+          language: values?.language,
+          genresId: values?.genres,
+          authorsId: values?.authors,
+          richTextSummary: values?.richTextSummary,
+          publisherId: values?.publisher,
+          publicationDate: values?.publicationDate?.format('MM-DD-YYYY'),
+        },
+      },
+      // eslint-disable-next-line @typescript-eslint/no-misused-promises
+      onCompleted: () =>
+        message.success('Successfully added book to the database'),
+      // eslint-disable-next-line @typescript-eslint/no-misused-promises
+      onError: (error) =>
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises
+        message.error(error.message),
+    });
+  };
+
   return (
     <Card
       bordered={false}
@@ -62,7 +93,7 @@ const AddBook = () => {
         width: '100%',
       }}
     >
-      <Form name="validate_other" onFinish={onFinish}>
+      <Form name="validateOther" onFinish={onFinish}>
         <Form.Item
           label="Title"
           name="title"
@@ -106,7 +137,7 @@ const AddBook = () => {
             options={languageOptions}
           />
         </Form.Item>
-        <Form.Item name="genre" label="Genre">
+        <Form.Item name="genres" label="Genres">
           <Select
             mode="multiple"
             allowClear
@@ -115,8 +146,8 @@ const AddBook = () => {
           />
         </Form.Item>
         <Form.Item
-          name="author"
-          label="Author"
+          name="authors"
+          label="Authors"
           rules={[
             { required: true, message: 'Please select the book authors!' },
           ]}
@@ -134,7 +165,7 @@ const AddBook = () => {
             placeholder="Please select the publisher"
           />
         </Form.Item>
-        <Form.Item name="publication_date" label="Publication date">
+        <Form.Item name="publicationDate" label="Publication date">
           <DatePicker />
         </Form.Item>
         <Form.Item
@@ -147,7 +178,7 @@ const AddBook = () => {
           <AntdTinymce initialValue="" />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" loading={addingBook}>
             Submit
           </Button>
         </Form.Item>

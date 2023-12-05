@@ -3,9 +3,9 @@ import AuthorDetail from '../AuthorDetail';
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
-import { GET_BOOK } from '../../graphql/hooks/getBook';
 import { Card, Skeleton, message } from 'antd';
 import BookCardList from '../BookCardList';
+import { GET_BOOK } from '../../graphql/hooks/GetBook';
 
 const BookPage = () => {
   const { id } = useParams();

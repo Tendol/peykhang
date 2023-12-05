@@ -2,13 +2,13 @@ import graphene
 from graphene import ObjectType, Schema
 from peykhangApi.models import Author, Book, Genre, Publisher
 from graphene_django.filter import DjangoFilterConnectionField
-from peykhangApi.mutations.create_book_mutation import CreateBookMutation
+from peykhangApi.mutations.create_book import CreateBook
 
 from peykhangApi.types.query_types import AuthorType, BookType, GenreType, PublisherType
 
 
 class Mutation(graphene.ObjectType):
-    create_book = graphene.Field(CreateBookMutation)
+    create_book = CreateBook.Field()
 
 
 class Query(ObjectType):
