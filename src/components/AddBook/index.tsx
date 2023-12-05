@@ -9,8 +9,8 @@ import _ from 'lodash';
 import { GET_AUTHORS } from '../../graphql/hooks/GetAuthors';
 import longName from '../Helpers/longName';
 import { GET_PUBLISHERS } from '../../graphql/hooks/GetPublishers';
-import { CREATE_BOOK } from '../../graphql/hooks/CreateBook';
 import { GET_BOOKS } from '../../graphql/hooks/GetBooks';
+import { CREATE_BOOK } from '../../graphql/hooks/CreateBook';
 
 export interface GenresData {
   genres: {
