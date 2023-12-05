@@ -91,7 +91,7 @@ class Book(models.Model):
         file_contents = json.load(settings)
 
         """convert the json list to set of tuples """
-        languages = {(k, v) for k, v in file_contents["languages"].items()}
+        languages = {(k, v["label"]) for k, v in file_contents["languagesCode"].items()}
 
     language = models.CharField(
         choices=languages, help_text="Selekc the book language", default="tibetan"

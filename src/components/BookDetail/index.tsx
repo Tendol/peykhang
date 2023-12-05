@@ -48,9 +48,9 @@ const BookDetail = ({ book }: BookDetailProps) => {
           </Col>
           <Col xs={24} sm={24} md={16} lg={16} xl={16}>
             <Space direction="vertical">
-              <Typography.Title> {book.title} </Typography.Title>
+              <Typography.Title> {book?.title} </Typography.Title>
               <HtmlMarkdown style={{ fontSize: '16px' }}>
-                {book.richTextSummary ?? ''}
+                {book?.richTextSummary ?? ''}
               </HtmlMarkdown>
               <br />
               <Descriptions
@@ -74,7 +74,7 @@ const BookDetail = ({ book }: BookDetailProps) => {
                     labelStyle={LABEL_STYLE}
                     contentStyle={CONTENT_STYLE}
                   >
-                    {capitalize(book?.publicationDate)}
+                    {book?.publicationDate}
                   </Descriptions.Item>
                 )}
                 {book?.language && (

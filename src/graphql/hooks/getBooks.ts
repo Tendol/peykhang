@@ -9,12 +9,15 @@ export const GET_BOOKS = gql`
       edges {
         node {
           id
-          summary
           title
+          summary
           isbn
           language
           bookCoverUrl
-          publicationDate
+          richTextSummary
+          publisher {
+            name
+          }
           genre {
             edges {
               node {
@@ -22,6 +25,18 @@ export const GET_BOOKS = gql`
               }
             }
           }
+          authors {
+            edges {
+              node {
+                id
+                firstName
+                lastName
+                summary
+                authorImageUrl
+              }
+            }
+          }
+          publicationDate
         }
       }
     }

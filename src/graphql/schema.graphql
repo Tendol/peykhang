@@ -1,11 +1,11 @@
 enum PeykhangapiBookLanguageChoices {
-  TIBETAN
-  ENGLISH
-  SPANISH
-  CHINESE
-  HINDI
-  FRENCH
-  ITALIAN
+  bo
+  en
+  es
+  zh
+  hi
+  fr
+  it
 }
 
 ###### Connection #####
@@ -81,13 +81,20 @@ type Publisher {
 
 #### Mutation Input Type ####
 
+type CreateBook {
+  book: Book
+}
+
 input BookInput {
   title: String
-  # richTextSummary: String
-  # isbn: String
-  # category: String
-  # authorsId: [String]
-  # genresId: [String]
+  richTextSummary: String
+  isbn: String
+  category: String
+  authorsId: [String]
+  genresId: [String]
+  language: String
+  publisherId: String
+  publicationDate: String
 }
 
 type Query {
@@ -101,5 +108,5 @@ type Query {
   publishers: [PublisherConnection]
 }
 type Mutation {
-  createBook(input: BookInput!): Book
+  createBook(input: BookInput!): CreateBook
 }
