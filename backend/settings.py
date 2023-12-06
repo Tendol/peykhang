@@ -97,6 +97,7 @@ WSGI_APPLICATION = "backend.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 
+# Local set up until I figure out the url
 DATABASES = {}
 # DATABASES["default"] = {
 #     "ENGINE": "django.db.backends.postgresql_psycopg2",
@@ -107,6 +108,7 @@ DATABASES = {}
 #     "PORT": env("DB_PORT"),
 # }
 
+# On heroku the postgres credentials keep changing which will automatically update the database url
 DATABASES["default"] = dj_database_url.config(
     conn_max_age=600, ssl_require=True, default=env("DATABASE_URL")
 )
