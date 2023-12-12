@@ -6,7 +6,6 @@ export const CREATE_BOOK = gql`
       book {
         id
         title
-        summary
         isbn
         language
         bookCoverUrl

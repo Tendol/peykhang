@@ -48,7 +48,6 @@ type PublisherNode {
 
 type Book {
   # bookMetaData: BookMetaData
-  summary: String
   title: String
   id: ID
   isbn: String

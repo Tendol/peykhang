@@ -10,7 +10,6 @@ export const GET_BOOKS = gql`
         node {
           id
           title
-          summary
           isbn
           language
           bookCoverUrl
