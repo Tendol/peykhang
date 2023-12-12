@@ -11,6 +11,7 @@ import longName from '../Helpers/longName';
 import { GET_PUBLISHERS } from '../../graphql/hooks/getPublishers';
 import { GET_BOOKS } from '../../graphql/hooks/getBooks';
 import { CREATE_BOOK } from '../../graphql/hooks/createBook';
+import PeykhangUpload from '../PeykhangUpload';
 
 export interface GenresData {
   genres: {
@@ -176,6 +177,9 @@ const AddBook = () => {
           ]}
         >
           <AntdTinymce initialValue="" />
+        </Form.Item>
+        <Form.Item name="bookCover" label="Upload Book Cover">
+          <PeykhangUpload />
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit" loading={addingBook}>

@@ -21,6 +21,7 @@
     "antd": "^5.8.5",
     "apollo-boost": "^0.4.9",
     "apollo-client": "^2.6.10",
+    "aws-sdk": "^2.1512.0",
     "concurrently": "^8.2.1",
     "graphql": "^16.8.0",
     "json-loader": "^0.5.7",
