@@ -99,19 +99,19 @@ WSGI_APPLICATION = "backend.wsgi.application"
 
 # Local set up until I figure out the url
 DATABASES = {}
-# DATABASES["default"] = {
-#     "ENGINE": "django.db.backends.postgresql_psycopg2",
-#     "NAME": env("DB_NAME"),
-#     "USER": env("DB_USER"),
-#     "PASSWORD": env("DB_PASSWORD"),
-#     "HOST": env("DB_HOST"),
-#     "PORT": env("DB_PORT"),
-# }
+DATABASES["default"] = {
+    "ENGINE": "django.db.backends.postgresql_psycopg2",
+    "NAME": env("DB_NAME"),
+    "USER": env("DB_USER"),
+    "PASSWORD": env("DB_PASSWORD"),
+    "HOST": env("DB_HOST"),
+    "PORT": env("DB_PORT"),
+}
 
 # On heroku the postgres credentials keep changing which will automatically update the database url
-DATABASES["default"] = dj_database_url.config(
-    conn_max_age=600, ssl_require=True, default=env("DATABASE_URL")
-)
+# DATABASES["default"] = dj_database_url.config(
+#     conn_max_age=600, ssl_require=True, default=env("DATABASE_URL")
+# )
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

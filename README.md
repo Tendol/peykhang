@@ -2,6 +2,26 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Development set up
+
+### `brew install yarn`
+### `yarn set version 1.22.19`
+### Install Node
+### install nvm
+### `nvm install 18.16.0`
+### `yarn init`
+### `yarn install`
+
+
+## Run DJango server
+
+### `python3 manage.py runserver`
+
+## Start localhost 
+
+### `yarn start`
+
+
 ## Available Scripts
 
 In the project directory, you can run:

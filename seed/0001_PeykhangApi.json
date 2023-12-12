@@ -1,0 +1,48 @@
+[
+{
+    "model": "peykhangApi.genre",
+    "pk": 1,
+    "fields": {
+        "label": "fantasy"
+    }
+},
+{
+    "model": "peykhangApi.publisher",
+    "pk": 1,
+    "fields": {
+        "name": "Peykhang publishing company"
+    }
+},
+{
+    "model": "peykhangApi.book",
+    "pk": 1,
+    "fields": {
+        "title": "Tendol's first book",
+        "book_cover_url": null,
+        "rich_text_summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Facilisis mauris sit amet massa vitae tortor condimentum lacinia quis. Mi quis hendrerit dolor magna eget est lorem. Arcu cursus euismod quis viverra nibh cras. Quis varius quam quisque id diam. Sed adipiscing diam donec adipiscing tristique risus. Risus pretium quam vulputate dignissim suspendisse. Tempor commodo ullamcorper a lacus vestibulum sed arcu non. Tristique sollicitudin nibh sit amet commodo nulla facilisi nullam. Habitant morbi tristique senectus et. Praesent elementum facilisis leo vel fringilla est ullamcorper eget nulla. Massa tincidunt nunc pulvinar sapien et ligula. Consectetur purus ut faucibus pulvinar elementum integer enim. Neque vitae tempus quam pellentesque nec nam aliquam sem et. Mattis molestie a iaculis at. Dui vivamus arcu felis bibendum ut tristique et egestas quis. Egestas sed tempus urna et pharetra pharetra massa. Pellentesque elit eget gravida cum sociis. Sed vulputate odio ut enim. Phasellus vestibulum lorem sed risus ultricies tristique. Pulvinar neque laoreet suspendisse interdum consectetur libero id faucibus. Amet nisl suscipit adipiscing bibendum est ultricies integer. Vel quam elementum pulvinar etiam non quam lacus. Pulvinar pellentesque habitant morbi tristique senectus et netus et. Donec enim diam vulputate ut pharetra sit amet aliquam id. Viverra vitae congue eu consequat ac felis donec et odio. Lacus vel facilisis volutpat est velit egestas. Urna molestie at elementum eu facilisis sed odio. Fringilla urna porttitor rhoncus dolor purus non enim praesent. Faucibus interdum posuere lorem ipsum dolor. Porttitor lacus luctus accumsan tortor. Tristique nulla aliquet enim tortor at.",
+        "isbn": "1234567891",
+        "category": "fiction",
+        "publisher": 1,
+        "publication_date": null,
+        "language": "bo",
+        "authors": [
+            1
+        ],
+        "genre": [
+            1
+        ]
+    }
+},
+{
+    "model": "peykhangApi.author",
+    "pk": 1,
+    "fields": {
+        "first_name": "Tenzin",
+        "last_name": "Gyalpo",
+        "date_of_birth": null,
+        "date_of_death": null,
+        "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi tincidunt ornare massa eget egestas purus viverra. Aliquet risus feugiat in ante metus dictum. Amet nisl purus in mollis nunc sed. Faucibus in ornare quam viverra orci sagittis. Orci porta non pulvinar neque. Mauris cursus mattis molestie a. Euismod quis viverra nibh cras pulvinar mattis nunc. Nunc lobortis mattis aliquam faucibus purus in massa tempor. Placerat vestibulum lectus mauris ultrices eros in cursus. Metus vulputate eu scelerisque felis imperdiet proin fermentum. Dignissim convallis aenean et tortor at risus viverra. Laoreet non curabitur gravida arcu. Tristique senectus et netus et malesuada fames ac.",
+        "author_image_url": null
+    }
+}
+]

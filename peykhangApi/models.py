@@ -44,10 +44,6 @@ class Book(models.Model):
 
     authors = models.ManyToManyField("Author", help_text="Select the book author")
 
-    summary = models.TextField(
-        max_length=1000, null=True, help_text="Enter a brief description of the book"
-    )
-
     rich_text_summary = RichTextField(
         null=True,
     )
